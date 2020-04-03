@@ -39,25 +39,26 @@ public class UIResourceController : MonoBehaviour {
 
 	public void AddResourceSlider(ResourceType type, GameObject resource) {
 
-		GameObject slider = Instantiate(sliderPrefab, transform.position, transform.rotation) as GameObject;
-		slider.transform.parent = canvas.transform;
+		GameObject slider = Instantiate(sliderPrefab, new Vector3 (0f, 0f, 0f), canvas.transform.rotation) as GameObject;
+		slider.transform.SetParent (canvas.transform);
 
 		RectTransform rt = slider.GetComponent<RectTransform> ();
 
-		Vector3 newPos = new Vector3 (rt.localPosition.x, (rt.localPosition.y + resourceSpacing * resourceUIDict.Count), rt.localPosition.z);
+		Vector3 newPos = new Vector3 (0f, (resourceSpacing * resourceUIDict.Count), 0f);
 
 		rt.localPosition = newPos;
 
 		resourceUIDict.Add (type, slider);
 
 		// Set Label.
-		slider.GetComponentInChildren<Text> ().text = resource.GetComponent<BaseResource> ().baseID.ToString();
+		slider.GetComponent<ResourceUI> ().SetLabel(resource.GetComponent<BaseResource> ().baseID.ToString());
 	}
 
 	public void UpdateResoureSlider (ResourceType type) {
 		BaseResource resource = resourceManager.resourceDict [type].GetComponent<BaseResource> ();
 		GameObject sliderGO = resourceUIDict[type];
 
-		sliderGO.GetComponent<Slider> ().value = resource.GetSliderValue();
+		sliderGO.GetComponent<ResourceUI> ().SetSliderVal(resource.GetSliderValue());
+		sliderGO.GetComponent<ResourceUI> ().SetCount(resource.count.ToString());
 	}
 }

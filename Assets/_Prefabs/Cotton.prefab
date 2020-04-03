@@ -57,6 +57,6 @@ MonoBehaviour:
   limit: 20
   collecting: 0
   collectingStartTime: 0
-  timeToGather: 900
-  collectMin: 1
-  collectMax: 3
+  timeToGather: 45
+  collectMin: 2
+  collectMax: 5

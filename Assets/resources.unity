@@ -426,7 +426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49cb93939df23408998121e3498f96a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sliderPrefab: {fileID: 1083261705262042, guid: 8f182d5bc55ee4a4a99617ac8c272ad2,
+  sliderPrefab: {fileID: 1318425599407678, guid: 8ae663a44f99041f794b33140223dd17,
     type: 2}
   canvas: {fileID: 2113259582}
   resourceSpacing: 50
