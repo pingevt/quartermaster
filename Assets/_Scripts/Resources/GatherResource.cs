@@ -31,6 +31,7 @@ public class GatherResource : BaseResource {
 
 			collectMin = savedData.collectMin;
 			collectMin = savedData.collectMin;
+
 		}
 	}
 	
@@ -38,9 +39,9 @@ public class GatherResource : BaseResource {
 	void Update () {
 		if (collecting) {
 			// check what we should have.
-			double difference = Epoch.SecondsElapsed (Epoch.Current (), timeToGather);
+			double difference = Epoch.SecondsElapsed (Epoch.Current (), collectingStartTime);
 
-			if (difference > collectingStartTime) {
+			if (difference > timeToGather) {
 				collectingStartTime += timeToGather;
 
 				gatherResource ();
@@ -55,7 +56,7 @@ public class GatherResource : BaseResource {
 
 	void gatherResource() {
 		int actualGatherAmount = UnityEngine.Random.Range (collectMin, (collectMax + 1));
-		Debug.Log ("Gathered: " + actualGatherAmount.ToString() + " " + baseID.ToString());
+//		Debug.Log ("Gathered: " + actualGatherAmount.ToString() + " " + baseID.ToString());
 
 		if ((count + actualGatherAmount) > limit) {
 
@@ -65,7 +66,30 @@ public class GatherResource : BaseResource {
 		} else {
 			Debug.Log ("Still Gathering");
 			count += actualGatherAmount;
+			collecting = true;
 		}
+	}
+
+	public override bool UseResources(int useCount) {
+		if (useCount <= count) {
+			count -= useCount;
+
+			if (count < limit && !collecting) {
+				startCollecting ();
+			}
+
+			return true;
+		}
+
+		return false;
+	}
+
+	public override float GetSliderValue() {
+		double difference = Epoch.SecondsElapsed (Epoch.Current (), collectingStartTime);
+		float amt = (float) (difference / timeToGather); 
+
+//		Debug.Log ("Gather: " + amt.ToString());
+		return amt;
 	}
 		
 	void OnApplicationQuit() {

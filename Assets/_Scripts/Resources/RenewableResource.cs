@@ -46,10 +46,6 @@ public class RenewableResource : BaseResource {
 				count = (int)fullCount + collectingBase;
 			}
 		}
-
-
-		TextMesh text = GetComponentInChildren<TextMesh> ();
-		text.text = count.ToString ();
 	}
 
 	public override bool UseResources(int useCount) {

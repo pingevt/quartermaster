@@ -44,7 +44,6 @@ public class ResourceManager : MonoBehaviour {
 		return avail;
 	}
 
-
 	public bool ConsumeResources(List<ResourceNeed> resources) {
 
 		foreach (ResourceNeed need in resources) {

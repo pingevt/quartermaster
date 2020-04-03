@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,5 +35,10 @@ public class BaseResource : MonoBehaviour {
 		}
 		
 		return false;
+	}
+
+	public virtual float GetSliderValue() {
+		float amt = (float) (fullCount - Math.Truncate(fullCount)); 
+		return amt;
 	}
 }
