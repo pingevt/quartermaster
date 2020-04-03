@@ -1,0 +1,66 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class RecipeManager : MonoBehaviour {
+
+	public GameObject[] recipes = new GameObject[1];
+
+	public Dictionary<string, GameObject> recipeDict = new Dictionary<string, GameObject>();
+
+
+	protected CraftingManager craftingManager;
+
+	// Use this for initialization
+	void Start () {
+		craftingManager = FindObjectOfType<CraftingManager>();
+		if (!craftingManager) {
+			Debug.LogWarning ("No Crafting Manager");
+		}
+
+		foreach (GameObject recipe in recipes) {
+			GameObject go = Instantiate(recipe, transform.position, transform.rotation) as GameObject;
+			go.transform.parent = transform;
+
+			recipeDict.Add (go.GetComponent<Recipe>().recipeID, go);
+		}
+	}
+	
+	// Update is called once per frame
+	void Update () { 
+		
+	}
+
+
+
+
+
+
+
+	
+	// For testing only.
+	public void queueSword() {
+		craftingManager.AddToQueue(recipeDict["sword"].GetComponent<Recipe>());
+	}
+
+	public void queueStaff() {
+		craftingManager.AddToQueue(recipeDict["staff"].GetComponent<Recipe>());
+	}
+}
+
+
+[System.Serializable]
+public class ResourceNeed {
+
+	public ResourceType resourceID;
+	public int resourceCount;
+
+	public ResourceNeed(ResourceType id, int count) {
+		resourceID = id;
+		resourceCount = count;
+	}
+
+	public ResourceNeed() {
+
+	}
+}
