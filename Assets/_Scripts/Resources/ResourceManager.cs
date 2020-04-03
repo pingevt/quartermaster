@@ -101,4 +101,5 @@ public enum ResourceType {
 	iron,
 	wood,
 	herbs,
+	cotton,
 }
