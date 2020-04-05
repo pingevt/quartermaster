@@ -44,9 +44,9 @@ public class UIResourceController : MonoBehaviour {
 
 		RectTransform rt = slider.GetComponent<RectTransform> ();
 
-		Vector3 newPos = new Vector3 (0f, (resourceSpacing * resourceUIDict.Count), 0f);
+		Vector3 newPos = new Vector3 (0, (resourceSpacing * resourceUIDict.Count), 0);
 
-		rt.localPosition = newPos;
+		rt.anchoredPosition = newPos;
 
 		resourceUIDict.Add (type, slider);
 

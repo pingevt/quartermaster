@@ -408,6 +408,7 @@ GameObject:
   m_Component:
   - component: {fileID: 996084040}
   - component: {fileID: 996084039}
+  - component: {fileID: 996084041}
   m_Layer: 0
   m_Name: UIController
   m_TagString: Untagged
@@ -443,6 +444,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &996084041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 996084038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2976362a08c444e30bbc0e0186b78207, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIPrefab: {fileID: 1816384813986678, guid: 8db0cbd3c5e9c402ca956f2508432fa0, type: 2}
+  canvas: {fileID: 2113259582}
+  recipeSpacing: 60
 --- !u!1 &1574804978
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,6 +504,7 @@ MonoBehaviour:
   recipes:
   - {fileID: 1161601812186246, guid: 587e72704c4d246599f91535b744a00d, type: 2}
   - {fileID: 1980410800737940, guid: 9aebd2a03951148ca8a97e86df0857f1, type: 2}
+  - {fileID: 1031710637862598, guid: 708c58d33672b4b1198f036eedf2e871, type: 2}
 --- !u!1 &2003476557
 GameObject:
   m_ObjectHideFlags: 0

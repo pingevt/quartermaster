@@ -31,6 +31,11 @@ public class RecipeManager : MonoBehaviour {
 		
 	}
 
+	public void queueRecipe(string recipeId) {
+		craftingManager.AddToQueue(recipeDict[recipeId].GetComponent<Recipe>());
+	}
+
+
 
 
 

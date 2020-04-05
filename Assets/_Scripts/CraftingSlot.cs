@@ -5,9 +5,9 @@ using UnityEngine;
 [System.Serializable]
 public class CraftingSlot {
 
-	public CraftingManager manager;
-
 	public bool busy = false;
+
+	CraftingManager manager;
 
 	public CraftingSlot(CraftingManager m) {
 		manager = m;
@@ -27,5 +27,9 @@ public class CraftingSlot {
 	public void ItemFinishedCrafting() {
 		busy = false;
 		manager.checkQueue (this);
+	}
+
+	public CraftingManager GetCraftingManager() {
+		return manager;
 	}
 }
