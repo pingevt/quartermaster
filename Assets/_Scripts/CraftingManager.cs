@@ -51,10 +51,12 @@ public class CraftingManager : MonoBehaviour {
 				queue.RemoveAt (queue.IndexOf(item));
 
 				// Tell UI Manager...
-				uiController.HasUpdated(slots.IndexOf(slot));
+				gameObject.SendMessage("ChangedCrafting", slots.IndexOf(slot));
 
-				break;
+				return;
 			}
 		}
+
+    gameObject.SendMessage("FinishedCrafting", slots.IndexOf(slot));
 	}
 }

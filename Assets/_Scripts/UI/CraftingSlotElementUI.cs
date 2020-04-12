@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CraftingElementUI : MonoBehaviour {
+public class CraftingSlotElementUI : MonoBehaviour {
 
 	public Slider slider;
 	public Image sliderBG;
@@ -29,7 +29,6 @@ public class CraftingElementUI : MonoBehaviour {
 			}
 
 			SetSliderVal (slot.GetProgress ());
-//			SetSliderVal (slot.GetProgress ());
 		}
 	}
 
@@ -37,7 +36,7 @@ public class CraftingElementUI : MonoBehaviour {
 		slot = s;
 	}
 
-	public void SetSprite(Sprite img) {
+	private void SetSprite(Sprite img) {
 		recipeImg.sprite = img;
 	}
 
@@ -58,5 +57,7 @@ public class CraftingElementUI : MonoBehaviour {
 		slider.value = 0;
 		recipeImg.enabled = true;
 		sliderBG.color = activBGColor;
+
+		SetSprite( slot.GetCurrentRecipe().recipeImage );
 	}
 }

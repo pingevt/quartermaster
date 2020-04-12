@@ -44,18 +44,19 @@ public class UI_CraftingController : MonoBehaviour {
 		Vector3 newPos = new Vector3 ((spacing * slotUIDict.Count), 0f, 0f);
 		rt.anchoredPosition = newPos;
 
-		button.GetComponent<CraftingElementUI>().SetSlot (slot);
+		button.GetComponent<CraftingSlotElementUI>().SetSlot (slot);
 
 		slotUIDict.Add (index, button);
 	}
 
-//	void UpdateSlotUI(int index, CraftingSlot slot) {
-//		// Check if crafting...
-//			// Update Image...
-//			// Update Slider...
-//	}
+	public void ChangedCrafting(int index) {
+    slotUIDict[index].GetComponent<CraftingSlotElementUI>().SetInactive();
+    slotUIDict[index].GetComponent<CraftingSlotElementUI>().SetActive();
+  }
 
-	public void HasUpdated(int index) {
-
+	public void FinishedCrafting(int index) {
+		if (slotUIDict.ContainsKey(index))
+			slotUIDict[index].GetComponent<CraftingSlotElementUI>().SetInactive();
 	}
+
 }
