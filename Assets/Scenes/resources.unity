@@ -171,6 +171,8 @@ MonoBehaviour:
   gatherableResources:
   - {fileID: 1175966176956418, guid: ba39db464418e45808c213fe6c4b5709, type: 3}
   - {fileID: 1622272629222172, guid: 94b26fe643ec74449a5ecfab6b9136bf, type: 3}
+  collectableResources:
+  - {fileID: 2149799103503850410, guid: 44b4e81bb62d943ab9f45cdeb557ac3f, type: 3}
 --- !u!114 &116456078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,6 +356,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 946910928}
+  - component: {fileID: 946910929}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -379,6 +382,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &946910929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946910927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71039c9718d7249a38dc5b7458172b15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerID: 1234abc-2
 --- !u!1 &1574804978
 GameObject:
   m_ObjectHideFlags: 0

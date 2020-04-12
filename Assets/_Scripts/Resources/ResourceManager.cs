@@ -7,6 +7,7 @@ public class ResourceManager : MonoBehaviour {
 
 	public GameObject[] renewableResources;
 	public GameObject[] gatherableResources;
+  public GameObject[] collectableResources;
 
 	public Dictionary<ResourceType, GameObject> resourceDict = new Dictionary<ResourceType, GameObject>();
 
@@ -25,11 +26,18 @@ public class ResourceManager : MonoBehaviour {
 
 			resourceDict.Add (go.GetComponent<BaseResource>().baseID, go);
 		}
+
+		foreach (GameObject resource in collectableResources) {
+			GameObject go = Instantiate(resource, transform.position, transform.rotation) as GameObject;
+			go.transform.parent = transform;
+
+			resourceDict.Add (go.GetComponent<BaseResource>().baseID, go);
+		}
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 
 	public bool AvailableResources(List<ResourceNeed> resources) {
@@ -55,7 +63,7 @@ public class ResourceManager : MonoBehaviour {
 	}
 
 	public void ConsumeResource(ResourceType type, int count) {
-		
+
 		resourceDict [type].GetComponent<BaseResource> ().UseResources (count);
 	}
 
@@ -77,7 +85,7 @@ public class ResourceManager : MonoBehaviour {
 //	public void useResource(string resourceId, int amount) {
 //		foreach (RenewableResource resource in GetComponentsInChildren<RenewableResource>()){
 //			if (resource.baseID == resourceId){
-//				resource.UseResources (amount); 
+//				resource.UseResources (amount);
 //			}
 //		}
 //
@@ -101,4 +109,5 @@ public enum ResourceType {
 	wood,
 	herbs,
 	cotton,
+	rock,
 }

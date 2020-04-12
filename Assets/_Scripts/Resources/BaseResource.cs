@@ -13,16 +13,16 @@ public class BaseResource : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 
 	public virtual bool CheckAvailable(int checkCount) {
-		if (checkCount < count) 
+		if (checkCount < count)
 			return true;
 
 		return false;
@@ -33,12 +33,17 @@ public class BaseResource : MonoBehaviour {
 			count -= useCount;
 			return true;
 		}
-		
+
 		return false;
-	}
+  }
+
+  public virtual bool AddResources(int addCount) {
+		count += addCount;
+		return true;
+  }
 
 	public virtual float GetSliderValue() {
-		float amt = (float) (fullCount - Math.Truncate(fullCount)); 
+		float amt = (float) (fullCount - Math.Truncate(fullCount));
 		return amt;
 	}
 }
