@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CraftingUI : MonoBehaviour {
+public class CraftingElementUI : MonoBehaviour {
 
 	public Slider slider;
 	public Image sliderBG;
@@ -19,7 +19,7 @@ public class CraftingUI : MonoBehaviour {
 	void Start () {
 		SetInactive ();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (slot.busy) {

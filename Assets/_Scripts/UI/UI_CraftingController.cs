@@ -20,7 +20,7 @@ public class UI_CraftingController : MonoBehaviour {
 			Debug.LogWarning ("No Crafting Manager");
 		}
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		foreach (CraftingSlot slot in craftingManager.slots) {
@@ -44,7 +44,7 @@ public class UI_CraftingController : MonoBehaviour {
 		Vector3 newPos = new Vector3 ((spacing * slotUIDict.Count), 0f, 0f);
 		rt.anchoredPosition = newPos;
 
-		button.GetComponent<CraftingUI>().SetSlot (slot);
+		button.GetComponent<CraftingElementUI>().SetSlot (slot);
 
 		slotUIDict.Add (index, button);
 	}
@@ -56,6 +56,6 @@ public class UI_CraftingController : MonoBehaviour {
 //	}
 
 	public void HasUpdated(int index) {
-		
+
 	}
 }

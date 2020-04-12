@@ -23,7 +23,7 @@ public class UI_ResourceController : MonoBehaviour {
 			Debug.LogWarning ("No Resource Manager");
 		}
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		foreach (KeyValuePair<ResourceType, GameObject> resource in resourceManager.resourceDict) {
@@ -49,14 +49,14 @@ public class UI_ResourceController : MonoBehaviour {
 		resourceUIDict.Add (type, slider);
 
 		// Set Label.
-		slider.GetComponent<ResourceUI> ().SetLabel(resource.GetComponent<BaseResource> ().baseID.ToString());
+		slider.GetComponent<ResourceElementUI> ().SetLabel(resource.GetComponent<BaseResource> ().baseID.ToString());
 	}
 
 	public void UpdateResoureSlider (ResourceType type) {
 		BaseResource resource = resourceManager.resourceDict [type].GetComponent<BaseResource> ();
 		GameObject sliderGO = resourceUIDict[type];
 
-		sliderGO.GetComponent<ResourceUI> ().SetSliderVal(resource.GetSliderValue());
-		sliderGO.GetComponent<ResourceUI> ().SetCount(resource.count.ToString());
+		sliderGO.GetComponent<ResourceElementUI> ().SetSliderVal(resource.GetSliderValue());
+		sliderGO.GetComponent<ResourceElementUI> ().SetCount(resource.count.ToString());
 	}
 }

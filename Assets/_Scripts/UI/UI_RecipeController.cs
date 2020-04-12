@@ -30,7 +30,7 @@ public class UI_RecipeController : MonoBehaviour {
 			Debug.LogWarning ("No Crafting Manager");
 		}
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		foreach (KeyValuePair<string, GameObject> recipe in recipeManager.recipeDict) {
@@ -57,7 +57,7 @@ public class UI_RecipeController : MonoBehaviour {
 
 		// Set Image.
 		Sprite sp = resource.GetComponent<Recipe> ().recipeImage;
-		button.GetComponent<RecipeUI> ().SetSprite(sp);
+		button.GetComponent<RecipeElementUI> ().SetSprite(sp);
 
 		// Set Button
 		resource.GetComponent<Recipe> ().AddButton (button.GetComponentInChildren<Button>());
