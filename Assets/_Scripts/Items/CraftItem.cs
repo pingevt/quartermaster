@@ -48,6 +48,10 @@ public class CraftItem : MonoBehaviour {
 		craftingSlot = slot;
 	}
 
+	public double GetProgress() {
+		return (Epoch.SecondsElapsed (Epoch.Current (), craftingStartTime)) / craftingTimeLength;
+	}
+
 	protected void StartCrafting() {
 		crafting = true;
 		craftingStartTime = Epoch.Current ();

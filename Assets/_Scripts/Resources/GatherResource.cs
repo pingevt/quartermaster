@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using NUnit;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
@@ -34,7 +33,7 @@ public class GatherResource : BaseResource {
 
 		}
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (collecting) {
@@ -48,7 +47,7 @@ public class GatherResource : BaseResource {
 			}
 		}
 	}
-		
+
 	void startCollecting() {
 		collectingStartTime = Epoch.Current();
 		collecting = true;
@@ -86,12 +85,12 @@ public class GatherResource : BaseResource {
 
 	public override float GetSliderValue() {
 		double difference = Epoch.SecondsElapsed (Epoch.Current (), collectingStartTime);
-		float amt = (float) (difference / timeToGather); 
+		float amt = (float) (difference / timeToGather);
 
 //		Debug.Log ("Gather: " + amt.ToString());
 		return amt;
 	}
-		
+
 	void OnApplicationQuit() {
 		Save ();
 	}
@@ -127,7 +126,7 @@ public class GatherResource : BaseResource {
 		return new GatherResourceData (true);
 	}
 }
-	
+
 [Serializable]
 public class GatherResourceData {
 	public int count;

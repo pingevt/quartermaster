@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UIRecipeController : MonoBehaviour {
+public class UI_RecipeController : MonoBehaviour {
 
 	public GameObject UIPrefab;
 	public Canvas canvas;
@@ -35,9 +35,8 @@ public class UIRecipeController : MonoBehaviour {
 	void Update () {
 		foreach (KeyValuePair<string, GameObject> recipe in recipeManager.recipeDict) {
 			if (recipeUIDict.ContainsKey (recipe.Key)) {
-				Debug.Log ("Update Button");
-
-//								UpdateRecipeSlider (recipe.Key);
+//				Debug.Log ("Update Button");
+//				UpdateRecipeSlider (recipe.Key);
 			} else {
 				AddRecipeSlider (recipe.Key, recipe.Value);
 			}

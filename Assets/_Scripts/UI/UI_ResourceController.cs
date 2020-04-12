@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UIResourceController : MonoBehaviour {
+public class UI_ResourceController : MonoBehaviour {
 
 	public GameObject sliderPrefab;
 	public Canvas canvas;
@@ -28,8 +28,6 @@ public class UIResourceController : MonoBehaviour {
 	void Update () {
 		foreach (KeyValuePair<ResourceType, GameObject> resource in resourceManager.resourceDict) {
 			if (resourceUIDict.ContainsKey (resource.Key)) {
-				Debug.Log ("Update Slider");
-
 				UpdateResoureSlider (resource.Key);
 			} else {
 				AddResourceSlider (resource.Key, resource.Value);

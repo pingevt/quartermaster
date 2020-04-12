@@ -9,27 +9,37 @@ public class CraftingSlot {
 
 	CraftingManager manager;
 
+	private GameObject currentCraftObj;
+
 	public CraftingSlot(CraftingManager m) {
 		manager = m;
 	}
 
 	public bool CanCraft (Recipe item) {
-		Debug.Log ("CanCraft:" + !busy);
-
+		// Debug.Log ("CanCraft:" + !busy);
 		return !busy;
 	}
 
 	public void Craft (Recipe item) {
 		busy = true;
-		item.CraftItem (this);
+		currentCraftObj = item.CraftItem (this);
 	}
 
 	public void ItemFinishedCrafting() {
+		currentCraftObj = null;
 		busy = false;
 		manager.checkQueue (this);
 	}
 
 	public CraftingManager GetCraftingManager() {
 		return manager;
+	}
+
+	public float GetProgress() {
+		if (busy) {
+			return (float) currentCraftObj.GetComponent<CraftItem>().GetProgress ();
+		}
+
+		return 0f;
 	}
 }

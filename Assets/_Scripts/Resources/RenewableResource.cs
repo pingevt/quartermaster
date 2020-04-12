@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using NUnit;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
@@ -28,10 +27,10 @@ public class RenewableResource : BaseResource {
 			rate = savedData.rate;
 		}
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		
+
 		if (collecting) {
 			// check what we should have.
 			double difference = Epoch.SecondsElapsed (Epoch.Current (), collectingStartTime);
