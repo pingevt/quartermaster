@@ -18,20 +18,20 @@ public class GatherResource : BaseResource {
 	// Use this for initialization
 	void Start () {
 
-		GatherResourceData savedData = Load ();
+		// GatherResourceData savedData = Load ();
 
-		if (savedData.empty) {
-			startCollecting ();
-		} else {
-			count = savedData.count;
-			collecting = savedData.collecting;
-			collectingStartTime = savedData.collectingStartTime;
-			timeToGather = savedData.timeToGather;
+		// if (savedData.empty) {
+		// 	startCollecting ();
+		// } else {
+		// 	count = savedData.count;
+		// 	collecting = savedData.collecting;
+		// 	collectingStartTime = savedData.collectingStartTime;
+		// 	timeToGather = savedData.timeToGather;
 
-			collectMin = savedData.collectMin;
-			collectMin = savedData.collectMin;
+		// 	collectMin = savedData.collectMin;
+		// 	collectMin = savedData.collectMin;
 
-		}
+		// }
 	}
 
 	// Update is called once per frame
@@ -91,40 +91,42 @@ public class GatherResource : BaseResource {
 		return amt;
 	}
 
-	void OnApplicationQuit() {
-		Save ();
-	}
+	// void OnApplicationQuit() {
+	// 	Save ();
+	// }
 
-	protected void Save() {
-		BinaryFormatter bf = new BinaryFormatter ();
-		FileStream file = File.Create (Application.persistentDataPath + "/resource." + baseID + ".dat");
+	// protected void Save() {
+	// 	BinaryFormatter bf = new BinaryFormatter ();
+	// 	FileStream file = File.Create (Application.persistentDataPath + "/resource." + baseID + ".dat");
 
-		GatherResourceData data = new GatherResourceData ();
-		data.count = count;
-		data.fullCount = fullCount;
-		data.limit = limit;
-		data.collecting = collecting;
-		data.collectingStartTime = collectingStartTime;
-		data.timeToGather = timeToGather;
-		data.collectMin = collectMin;
-		data.collectMax = collectMax;
+	// 	GatherResourceData data = new GatherResourceData ();
+	// 	data.count = count;
+	// 	data.fullCount = fullCount;
+	// 	data.limit = limit;
+	// 	data.collecting = collecting;
+	// 	data.collectingStartTime = collectingStartTime;
+	// 	data.timeToGather = timeToGather;
+	// 	data.collectMin = collectMin;
+	// 	data.collectMax = collectMax;
 
-		bf.Serialize (file, data);
-		file.Close ();
-	}
+	// 	bf.Serialize (file, data);
+	// 	file.Close ();
+	// }
 
-	protected GatherResourceData Load() {
-		if (File.Exists (Application.persistentDataPath + "/resource." + baseID + ".dat")) {
-			BinaryFormatter bf = new BinaryFormatter ();
-			FileStream file = File.Open (Application.persistentDataPath + "/resource." + baseID + ".dat", FileMode.Open);
-			GatherResourceData data = (GatherResourceData)bf.Deserialize (file);
-			file.Close ();
+	// protected GatherResourceData Load() {
+  //   Debug.Log(Application.persistentDataPath);
 
-			return data;
-		}
+  //   if (File.Exists (Application.persistentDataPath + "/resource." + baseID + ".dat")) {
+	// 		BinaryFormatter bf = new BinaryFormatter ();
+	// 		FileStream file = File.Open (Application.persistentDataPath + "/resource." + baseID + ".dat", FileMode.Open);
+	// 		GatherResourceData data = (GatherResourceData)bf.Deserialize (file);
+	// 		file.Close ();
 
-		return new GatherResourceData (true);
-	}
+	// 		return data;
+	// 	}
+
+	// 	return new GatherResourceData (true);
+	// }
 }
 
 [Serializable]

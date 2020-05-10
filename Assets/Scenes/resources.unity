@@ -165,14 +165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fafd66ccb6c6a47ba83ef31a79f6239d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renewableResources:
-  - {fileID: 1170509482949448, guid: ab4eb2f00201f4c1eb43a581d32841ca, type: 3}
-  - {fileID: 1032511027002100, guid: e7ac99449687a490eb8228d181c19eeb, type: 3}
-  gatherableResources:
-  - {fileID: 1175966176956418, guid: ba39db464418e45808c213fe6c4b5709, type: 3}
-  - {fileID: 1622272629222172, guid: 94b26fe643ec74449a5ecfab6b9136bf, type: 3}
-  collectableResources:
-  - {fileID: 2149799103503850410, guid: 44b4e81bb62d943ab9f45cdeb557ac3f, type: 3}
+  renewableResources: []
+  gatherableResources: []
+  collectableResources: []
 --- !u!114 &116456078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,10 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cde8dfe10e1084a5e94783e344ef4edb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recipes:
-  - {fileID: 1161601812186246, guid: 587e72704c4d246599f91535b744a00d, type: 3}
-  - {fileID: 1980410800737940, guid: 9aebd2a03951148ca8a97e86df0857f1, type: 3}
-  - {fileID: 1031710637862598, guid: 708c58d33672b4b1198f036eedf2e871, type: 3}
+  recipes: []
 --- !u!114 &1574804981
 MonoBehaviour:
   m_ObjectHideFlags: 0

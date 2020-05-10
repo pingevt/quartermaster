@@ -10,13 +10,13 @@ public class CollectableResource : BaseResource {
 	// Use this for initialization
 	void Start () {
 
-    CollectableResourceData savedData = Load ();
+    // CollectableResourceData savedData = Load ();
 
-		if (savedData.empty) {
+		// if (savedData.empty) {
 
-		} else {
-			count = savedData.count;
-		}
+		// } else {
+		// 	count = savedData.count;
+		// }
 	}
 
 	// Update is called once per frame
@@ -26,35 +26,35 @@ public class CollectableResource : BaseResource {
 		return 0.0f;
 	}
 
-	void OnApplicationQuit() {
-		Save ();
-	}
+	// void OnApplicationQuit() {
+	// 	Save ();
+	// }
 
-	protected void Save() {
-		BinaryFormatter bf = new BinaryFormatter ();
-		FileStream file = File.Create (Application.persistentDataPath + "/resource." + baseID + ".dat");
+	// protected void Save() {
+	// 	BinaryFormatter bf = new BinaryFormatter ();
+	// 	FileStream file = File.Create (Application.persistentDataPath + "/resource." + baseID + ".dat");
 
-		CollectableResourceData data = new CollectableResourceData ();
-		data.count = count;
-		data.fullCount = fullCount;
-		data.limit = limit;
+	// 	CollectableResourceData data = new CollectableResourceData ();
+	// 	data.count = count;
+	// 	data.fullCount = fullCount;
+	// 	data.limit = limit;
 
-		bf.Serialize (file, data);
-		file.Close ();
-	}
+	// 	bf.Serialize (file, data);
+	// 	file.Close ();
+	// }
 
-	protected CollectableResourceData Load() {
-		if (File.Exists (Application.persistentDataPath + "/resource." + baseID + ".dat")) {
-			BinaryFormatter bf = new BinaryFormatter ();
-			FileStream file = File.Open (Application.persistentDataPath + "/resource." + baseID + ".dat", FileMode.Open);
-      CollectableResourceData data = (CollectableResourceData)bf.Deserialize (file);
-			file.Close ();
+	// protected CollectableResourceData Load() {
+	// 	if (File.Exists (Application.persistentDataPath + "/resource." + baseID + ".dat")) {
+	// 		BinaryFormatter bf = new BinaryFormatter ();
+	// 		FileStream file = File.Open (Application.persistentDataPath + "/resource." + baseID + ".dat", FileMode.Open);
+  //     CollectableResourceData data = (CollectableResourceData)bf.Deserialize (file);
+	// 		file.Close ();
 
-			return data;
-		}
+	// 		return data;
+	// 	}
 
-		return new CollectableResourceData (true);
-	}
+	// 	return new CollectableResourceData (true);
+	// }
 }
 
 [Serializable]

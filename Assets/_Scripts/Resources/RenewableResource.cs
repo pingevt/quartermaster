@@ -14,18 +14,18 @@ public class RenewableResource : BaseResource {
 
 	// Use this for initialization
 	void Start () {
-		RenewableResourceData savedData = Load ();
-		if (savedData.empty) {
-			startCollecting ();
-		} else {
-			count = savedData.count;
-			fullCount = savedData.fullCount;
-			limit = savedData.limit;
-			collecting = savedData.collecting;
-			collectingStartTime = savedData.collectingStartTime;
-			collectingBase = savedData.collectingBase;
-			rate = savedData.rate;
-		}
+		// RenewableResourceData savedData = Load ();
+		// if (savedData.empty) {
+		// 	startCollecting ();
+		// } else {
+		// 	count = savedData.count;
+		// 	fullCount = savedData.fullCount;
+		// 	limit = savedData.limit;
+		// 	collecting = savedData.collecting;
+		// 	collectingStartTime = savedData.collectingStartTime;
+		// 	collectingBase = savedData.collectingBase;
+		// 	rate = savedData.rate;
+		// }
 	}
 
 	// Update is called once per frame
@@ -78,40 +78,40 @@ public class RenewableResource : BaseResource {
 		collecting = true;
 	}
 
-	void OnApplicationQuit() {
-		Save ();
-	}
+// 	void OnApplicationQuit() {
+// 		Save ();
+// 	}
 
-	protected void Save() {
-		BinaryFormatter bf = new BinaryFormatter ();
-		FileStream file = File.Create (Application.persistentDataPath + "/resource." + baseID + ".dat");
-//		Debug.Log (Application.persistentDataPath);
+// 	protected void Save() {
+// 		BinaryFormatter bf = new BinaryFormatter ();
+// 		FileStream file = File.Create (Application.persistentDataPath + "/resource." + baseID + ".dat");
+// //		Debug.Log (Application.persistentDataPath);
 
-		RenewableResourceData data = new RenewableResourceData ();
-		data.count = count;
-		data.fullCount = fullCount;
-		data.limit = limit;
-		data.collecting = collecting;
-		data.collectingStartTime = collectingStartTime;
-		data.collectingBase = collectingBase;
-		data.rate = rate;
+// 		RenewableResourceData data = new RenewableResourceData ();
+// 		data.count = count;
+// 		data.fullCount = fullCount;
+// 		data.limit = limit;
+// 		data.collecting = collecting;
+// 		data.collectingStartTime = collectingStartTime;
+// 		data.collectingBase = collectingBase;
+// 		data.rate = rate;
 
-		bf.Serialize (file, data);
-		file.Close ();
-	}
+// 		bf.Serialize (file, data);
+// 		file.Close ();
+// 	}
 
-	protected RenewableResourceData Load() {
-		if (File.Exists (Application.persistentDataPath + "/resource." + baseID + ".dat")) {
-			BinaryFormatter bf = new BinaryFormatter ();
-			FileStream file = File.Open (Application.persistentDataPath + "/resource." + baseID + ".dat", FileMode.Open);
-			RenewableResourceData data = (RenewableResourceData)bf.Deserialize (file);
-			file.Close ();
+// 	protected RenewableResourceData Load() {
+// 		if (File.Exists (Application.persistentDataPath + "/resource." + baseID + ".dat")) {
+// 			BinaryFormatter bf = new BinaryFormatter ();
+// 			FileStream file = File.Open (Application.persistentDataPath + "/resource." + baseID + ".dat", FileMode.Open);
+// 			RenewableResourceData data = (RenewableResourceData)bf.Deserialize (file);
+// 			file.Close ();
 
-			return data;
-		}
+// 			return data;
+// 		}
 
-		return new RenewableResourceData (true);
-	}
+// 		return new RenewableResourceData (true);
+// 	}
 }
 
 [Serializable]
