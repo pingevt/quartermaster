@@ -250,6 +250,71 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &866049882
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 866049883}
+  - component: {fileID: 866049884}
+  - component: {fileID: 866049885}
+  m_Layer: 0
+  m_Name: BuildingManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &866049883
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866049882}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 946910928}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &866049884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866049882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 748e1b50e1e864003879b8ae1835a95f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availableBuildings:
+  - {fileID: 2527209510503198689, guid: 48d2d153868e94c23a23667ba15f9f2e, type: 3}
+  - {fileID: 5074259352337460010, guid: e9a0bc2e02df042eeb3ea0377cf32abf, type: 3}
+  - {fileID: 6318484303847036244, guid: ece1e7623cffc4e59b152851337b1fcd, type: 3}
+--- !u!114 &866049885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866049882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de16d1d03fde84970af375d26c99e01c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIPrefab: {fileID: 9054035998679179731, guid: 37e0ac0d61fc14dacb917dd5a97368a4,
+    type: 3}
+  UIScrollerPrefab: {fileID: 7516272230767388136, guid: 5dbe0f46bcf6e4383b75df410daa7b2d,
+    type: 3}
+  canvas: {fileID: 2113259582}
 --- !u!1 &875653315
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,6 +439,7 @@ Transform:
   - {fileID: 1574804979}
   - {fileID: 2003476558}
   - {fileID: 2120818518}
+  - {fileID: 866049883}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -390,6 +456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerID: 1234abc-2
+  monies: 1500
 --- !u!1 &1574804978
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,7 +738,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2120818518
 Transform:
   m_ObjectHideFlags: 0

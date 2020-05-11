@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class BaseStorageBuilding : BaseBuilding
 {
-    public string playerID;
+  public int storageCapacity = 0;
 
-    public int monies = 1500;
-
-    // Start is called before the first frame update
-    void Start()
+  // Start is called before the first frame update
+  void Start()
     {
 
     }
