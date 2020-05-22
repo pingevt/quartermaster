@@ -9,31 +9,32 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1425040117364608}
+  m_RootGameObject: {fileID: 1054694849878404}
   m_IsPrefabParent: 1
---- !u!1 &1425040117364608
+--- !u!1 &1054694849878404
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4914276728075904}
-  - component: {fileID: 114727815321469054}
-  - component: {fileID: 114554201625068432}
+  - component: {fileID: 4881520447959016}
+  - component: {fileID: 114098582835161598}
+  - component: {fileID: 114711509623332716}
+  - component: {fileID: 114404225668510270}
   m_Layer: 0
-  m_Name: IronMine
+  m_Name: Woodshop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4914276728075904
+--- !u!4 &4881520447959016
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1425040117364608}
+  m_GameObject: {fileID: 1054694849878404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -41,31 +42,42 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114554201625068432
+--- !u!114 &114098582835161598
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1425040117364608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f06d1feb5eb0d406ca5d1dd99611e74b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114727815321469054
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1425040117364608}
+  m_GameObject: {fileID: 1054694849878404}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a8302ba000684eb49a9e0d5d3ba2d2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  building_id: iron_mine
+  building_id: woodshop
   lvl: 1
   exp: 0
   cost: 0
   buildLimit: 1
   buildingImage: {fileID: 0}
+--- !u!114 &114404225668510270
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1054694849878404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1dcdf59187464cad9e716d695b8b554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114711509623332716
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1054694849878404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 897f02d4419054c749c1e24f29db080d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

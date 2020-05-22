@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using UnityEngine.UI;
 
 public class UI_BuildingsController : MonoBehaviour
     {
@@ -10,7 +12,6 @@ public class UI_BuildingsController : MonoBehaviour
     public Canvas canvas;
 
     private BuildingManager buildingManager;
-
 
     public Dictionary<int, GameObject> buildingUIDict = new Dictionary<int, GameObject>();
 
@@ -35,28 +36,39 @@ public class UI_BuildingsController : MonoBehaviour
         }
     }
 
-    private void AddBuildingButton (int index, GameObject building) {
-
-        Debug.Log(UIScroller.transform.GetChild(0));
-        Debug.Log(UIScroller.transform.GetChild(0).transform.GetChild(0));
+    private void AddBuildingButton (int index, GameObject buildingGO) {
 
         GameObject button = Instantiate(UIPrefab, UIPrefab.transform.position, UIPrefab.transform.rotation) as GameObject;
         button.transform.SetParent(UIScroller.transform.GetChild(0).transform.GetChild(0), false);
 
+		RectTransform rt = button.GetComponent<RectTransform>();
 
+		float buttonHeight = (rt.sizeDelta.y);
+		float newY = ((30 * index) + (rt.sizeDelta.y * index)) * -1 + rt.anchoredPosition.y;
 
-    // RectTransform rt = button.GetComponent<RectTransform>();
-
-    // Vector3 newPos = new Vector3(0f, (recipeSpacing * recipeUIDict.Count), 0f);
-    // rt.anchoredPosition = newPos;
+		Vector3 newPos = new Vector3(rt.anchoredPosition.x, newY, 0f);
+		rt.anchoredPosition = newPos;
 
         buildingUIDict.Add(index, button);
 
-    // // Set Image.
-    // Sprite sp = resource.GetComponent<Recipe>().recipeImage;
-    // button.GetComponent<RecipeElementUI>().SetSprite(sp);
+		// Set Image.
+		BaseBuilding building = buildingGO.GetComponent<BaseBuilding>();
+		Sprite sp = building.buildingImage;
+		button.GetComponent<BuildingElementUI>().SetSprite(sp);
 
-    // // Set Button
-    // resource.GetComponent<Recipe>().AddButton(button.GetComponentInChildren<Button>());
+		// Set Title.
+
+		// Set Button Action.
+		button.GetComponent<Button>().onClick.AddListener(delegate {ClickedBuildingBUtton(building.building_id); } );
+
+		// Set Scroll Height.
+		float contentHeight = (newY * -1) + buttonHeight + 10;
+		canvas.GetComponentInChildren<BuildingScrollUI>().SetContentHeight(contentHeight);
     }
+
+	//delegate {ClickedBuildingBUtton("Hello"); } 
+	void ClickedBuildingBUtton(string building_id) {
+		Debug.Log (building_id);
+		buildingManager.buildBuilding (building_id);
+	}
 }

@@ -23,4 +23,8 @@ public class BuildingManager : MonoBehaviour
     {
 
     }
+
+	public void buildBuilding(string buildingID) {
+		
+	}
 }
