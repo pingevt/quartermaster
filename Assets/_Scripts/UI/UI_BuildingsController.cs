@@ -24,7 +24,8 @@ public class UI_BuildingsController : MonoBehaviour
 
     void Update() {
 
-		if (buildingManager.buildableBlueprintsDict.Count != buildingUIDict.Count) {
+		if (buildingManager.buildableBlueprintsDict.Count != buildingUIDict.Count || buildingManager.hasUpdated()) {
+
 			// Destroy objects, then reset list.
 			foreach (KeyValuePair<string, GameObject> buildingUI in buildingUIDict) {
 				Destroy (buildingUI.Value);
@@ -60,7 +61,6 @@ public class UI_BuildingsController : MonoBehaviour
 
 		Vector3 newPos = new Vector3(rt.anchoredPosition.x, newY, 0f);
 		rt.anchoredPosition = newPos;
-		Debug.Log (building_id);
 		buildingUIDict.Add(building_id, button);
 
 		// Set Image.

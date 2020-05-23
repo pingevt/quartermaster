@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BaseProvider : MonoBehaviour {
 
+	public GameObject[] objects;
+
 	// Use this for initialization
 	void Start () {
 		
