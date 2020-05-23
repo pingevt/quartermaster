@@ -10,7 +10,7 @@ public class CraftingSlot {
 	CraftingManager manager;
 
 	private GameObject currentCraftObj;
-  private Recipe currentCraftRecipe;
+  	private Recipe currentCraftRecipe;
 
 	public CraftingSlot(CraftingManager m) {
 		manager = m;
@@ -24,12 +24,12 @@ public class CraftingSlot {
 	public void Craft (Recipe item) {
 		busy = true;
 		currentCraftObj = item.CraftItem (this);
-    currentCraftRecipe = item;
+    	currentCraftRecipe = item;
 	}
 
 	public void ItemFinishedCrafting() {
 		currentCraftObj = null;
-    currentCraftRecipe = null;
+    	currentCraftRecipe = null;
 		busy = false;
 		manager.checkQueue (this);
 	}
@@ -47,11 +47,11 @@ public class CraftingSlot {
 	}
 
 	public GameObject GetCurrentItem() {
-    return currentCraftObj;
-  }
+		return currentCraftObj;
+	}
 
 	public Recipe GetCurrentRecipe() {
-    return currentCraftRecipe;
-  }
+		return currentCraftRecipe;
+	}
 
 }

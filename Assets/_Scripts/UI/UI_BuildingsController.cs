@@ -23,7 +23,13 @@ public class UI_BuildingsController : MonoBehaviour
     }
 
     void Update() {
+
 		if (buildingManager.buildableBlueprintsDict.Count != buildingUIDict.Count) {
+			// Destroy objects, then reset list.
+			foreach (KeyValuePair<string, GameObject> buildingUI in buildingUIDict) {
+				Destroy (buildingUI.Value);
+			}
+
 			buildingUIDict.Clear ();
 			RebuildBuildingUI ();
 		}
