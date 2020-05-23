@@ -411,10 +411,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 748e1b50e1e864003879b8ae1835a95f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableBuildings:
-  - {fileID: 1076430547553730, guid: c6a5c15f5299140b38e00134ef6b31a2, type: 2}
-  - {fileID: 1425040117364608, guid: eaa76ef6b5acb427e94572e71791815a, type: 2}
-  - {fileID: 1063504049063250, guid: be832bb751eb348dab66d3faab8fbdbb, type: 2}
+  availableBuildingBlueprints:
+  - {fileID: 1723964652445856, guid: f9c65cfb47c18490da7a0b95310e9d64, type: 2}
+  - {fileID: 1480774234426790, guid: c19e8f4bd6cc34148a82eb608490de92, type: 2}
 --- !u!114 &866049885
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114680914638462798}
   - component: {fileID: 114660184566514332}
   m_Layer: 0
-  m_Name: Apothecary
+  m_Name: Building_Apothecary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,12 +64,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a8302ba000684eb49a9e0d5d3ba2d2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingId: apothecary
   lvl: 1
   exp: 0
-  cost: 0
-  buildLimit: 1
-  buildingImage: {fileID: 0}
 --- !u!114 &114680914638462798
 MonoBehaviour:
   m_ObjectHideFlags: 1

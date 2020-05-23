@@ -57,6 +57,6 @@ public class CraftingManager : MonoBehaviour {
 			}
 		}
 
-    gameObject.SendMessage("FinishedCrafting", slots.IndexOf(slot));
+    	gameObject.SendMessage("FinishedCrafting", slots.IndexOf(slot));
 	}
 }

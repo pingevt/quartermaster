@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4352518599786114}
   - component: {fileID: 114193091821462906}
   m_Layer: 0
-  m_Name: LargeStorage
+  m_Name: Building_LargeStorage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,10 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f574f46915f471e8b4c7c56ce7798a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingId: large_storage
   lvl: 1
   exp: 0
-  cost: 5000
-  buildLimit: 1
-  buildingImage: {fileID: 21300000, guid: fe821d09dbd7945b093315f1dc238002, type: 3}
   storageCapacity: 50

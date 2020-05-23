@@ -23,17 +23,24 @@ public class UI_BuildingsController : MonoBehaviour
     }
 
     void Update() {
-        foreach (KeyValuePair<string, GameObject> building in buildingManager.availableBuildingsDict) {
-            if (buildingUIDict.ContainsKey(building.Key)) {
-                // Nothing at the moment.
-            }
-            else {
-                AddBuildingButton(building.Key, building.Value);
-            }
-        }
+		if (buildingManager.buildableBlueprintsDict.Count != buildingUIDict.Count) {
+			buildingUIDict.Clear ();
+			RebuildBuildingUI ();
+		}
     }
 
-    private void AddBuildingButton (string building_id, GameObject buildingGO) {
+	private void RebuildBuildingUI () {
+		foreach (KeyValuePair<string, GameObject> building in buildingManager.buildableBlueprintsDict) {
+			if (buildingUIDict.ContainsKey(building.Key)) {
+				// Nothing at the moment.
+			}
+			else {
+				AddBuildingButton(building.Key, building.Value);
+			}
+		}
+	}
+
+    private void AddBuildingButton (string building_id, GameObject blueprintGO) {
 
 		int index = buildingUIDict.Count;
 
@@ -51,14 +58,15 @@ public class UI_BuildingsController : MonoBehaviour
 		buildingUIDict.Add(building_id, button);
 
 		// Set Image.
-		BaseBuilding building = buildingGO.GetComponent<BaseBuilding>();
-		Sprite sp = building.buildingImage;
+		Blueprint blueprint = blueprintGO.GetComponent<Blueprint>();
+		Sprite sp = blueprint.buildingImage;
 		button.GetComponent<BuildingElementUI>().SetSprite(sp);
 
 		// Set Title.
+		button.GetComponent<BuildingElementUI>().SetTitle(blueprint.buildingTitle);
 
 		// Set Button Action.
-		button.GetComponent<Button>().onClick.AddListener(delegate {ClickedBuildingBUtton(building.buildingId); } );
+		button.GetComponent<Button>().onClick.AddListener(delegate {ClickedBuildingBUtton(blueprint.buildingId); } );
 
 		// Set Scroll Height.
 		float contentHeight = (newY * -1) + buttonHeight + 10;

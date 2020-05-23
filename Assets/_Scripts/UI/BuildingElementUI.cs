@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class BuildingElementUI : MonoBehaviour {
 
+	public Text text;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -18,5 +20,9 @@ public class BuildingElementUI : MonoBehaviour {
 	public void SetSprite(Sprite img) {
 		Image imgScript = GetComponent<Image> ();
 		imgScript.sprite = img;
+	}
+
+	public void SetTitle(string title) {
+		text.text = title;
 	}
 }

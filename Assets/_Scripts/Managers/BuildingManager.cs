@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class BuildingManager : MonoBehaviour
 {
 
-    public List<GameObject> availableBuildings;
-	public Dictionary<string, GameObject> availableBuildingsDict = new Dictionary<string, GameObject>();
+    public List<GameObject> availableBuildingBlueprints;
+
+	public Dictionary<string, GameObject> availableBlueprintsDict = new Dictionary<string, GameObject>();
+	public Dictionary<string, GameObject> buildableBlueprintsDict = new Dictionary<string, GameObject>();
+
 	public Dictionary<string, int> buildingCount = new Dictionary<string, int>();
 
 	private Player player;
@@ -19,9 +23,10 @@ public class BuildingManager : MonoBehaviour
 			Debug.LogWarning ("No Player");
 		}
 
-        foreach (GameObject b in availableBuildings) {
-			availableBuildingsDict.Add(b.GetComponent<BaseBuilding>().buildingId, b);
-			buildingCount.Add (b.GetComponent<BaseBuilding>().buildingId, 0);
+		foreach (GameObject b in availableBuildingBlueprints) {
+			availableBlueprintsDict.Add(b.GetComponent<Blueprint>().buildingId, b);
+			buildableBlueprintsDict.Add(b.GetComponent<Blueprint>().buildingId, b);
+			buildingCount.Add (b.GetComponent<Blueprint>().buildingId, 0);
         }
     }
 
@@ -32,36 +37,40 @@ public class BuildingManager : MonoBehaviour
 
 	public void buildBuilding(string building_id) {
 		Debug.Log (building_id);
-		BaseBuilding building = getBuildingFromID (building_id);
+		Blueprint blueprint = getBlueprintFromID (building_id);
 		
-		Debug.Log (canBuildBuilding(building));
+		Debug.Log (canBuildBuilding(blueprint));
 
 		// If we can...
-		if (canBuildBuilding(building)) {
+		if (canBuildBuilding(blueprint)) {
 
 			// Charge Player.
-			player.charge(building.cost);
+			player.charge(blueprint.cost);
+
+			// Increment
 
 			// Add GO.
 
 			// Check For Providers.
+
+			// Update Buildable list.
 		}
 
 	}
 
-	private bool canBuildBuilding(BaseBuilding building) {
+	private bool canBuildBuilding(Blueprint blueprint) {
 		bool canBuild = true;
 
 		// Check price.
-		if (player.monies < building.cost) {
+		if (player.monies < blueprint.cost) {
 			canBuild = false;
 		}
 
 		return canBuild;
 	}
 
-	public BaseBuilding getBuildingFromID (string building_id) {
-		GameObject buildingGO = availableBuildingsDict[building_id];
-		return buildingGO.GetComponent<BaseBuilding> ();
+	public Blueprint getBlueprintFromID (string building_id) {
+		GameObject buildingGO = availableBlueprintsDict[building_id];
+		return buildingGO.GetComponent<Blueprint> ();
 	}
 }
