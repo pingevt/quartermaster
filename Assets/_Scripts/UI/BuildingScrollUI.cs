@@ -17,12 +17,6 @@ public class BuildingScrollUI : MonoBehaviour {
 	}
 
 	public void SetContentHeight(float height) {
-		
-		Debug.Log (content.sizeDelta.x);
-		Debug.Log (height);
-
-		Debug.Log (content.sizeDelta);
-
 		content.sizeDelta = new Vector2 (content.sizeDelta.x, height);
 	}
 }
