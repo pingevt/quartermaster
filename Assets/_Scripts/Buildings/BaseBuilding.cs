@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BaseBuilding : MonoBehaviour
 {
-	public string building_id = "";
+	public string buildingId = "";
     public int lvl = 1;
     public int exp = 0;
     public int cost = 0;

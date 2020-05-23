@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f574f46915f471e8b4c7c56ce7798a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  building_id: medium_storage
+  buildingId: medium_storage
   lvl: 1
   exp: 0
   cost: 500

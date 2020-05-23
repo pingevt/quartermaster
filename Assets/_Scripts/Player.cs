@@ -19,4 +19,8 @@ public class Player : MonoBehaviour
     {
 
     }
+
+	public void charge(int amount) {
+		monies -= amount;
+	}
 }

@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a8302ba000684eb49a9e0d5d3ba2d2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  building_id: lumbard_yard
+  buildingId: lumber_yard
   lvl: 1
   exp: 0
   cost: 0
