@@ -17,7 +17,10 @@ public class GatherResource : BaseResource {
 
 	// Use this for initialization
 	void Start () {
-
+		resourceManager = FindObjectOfType<ResourceManager>();
+		if (!resourceManager) {
+			Debug.LogWarning ("No Resource Manager");
+		}
 		// GatherResourceData savedData = Load ();
 
 		// if (savedData.empty) {
@@ -67,6 +70,8 @@ public class GatherResource : BaseResource {
 			count += actualGatherAmount;
 			collecting = true;
 		}
+
+		resourceManager.ResourceUpdate ();
 	}
 
 	public override bool UseResources(int useCount) {

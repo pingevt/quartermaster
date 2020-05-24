@@ -44,7 +44,8 @@ public class CraftingManager : MonoBehaviour {
 					queue.RemoveAt (queue.IndexOf (item));
 
 					// Tell UI Manager...
-					gameObject.SendMessage ("ChangedCrafting", slot.craftingSlotId);
+//					gameObject.SendMessage ("ChangedCrafting", slot.craftingSlotId);
+					gameObject.SendMessage ("SetUIElementActive", slot.craftingSlotId);
 
 					return;
 				} else {

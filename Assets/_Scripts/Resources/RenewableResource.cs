@@ -14,6 +14,12 @@ public class RenewableResource : BaseResource {
 
 	// Use this for initialization
 	void Start () {
+		
+		resourceManager = FindObjectOfType<ResourceManager>();
+		if (!resourceManager) {
+			Debug.LogWarning ("No Resource Manager");
+		}
+
 		// RenewableResourceData savedData = Load ();
 		// if (savedData.empty) {
 		 	startCollecting ();
@@ -41,8 +47,12 @@ public class RenewableResource : BaseResource {
 				count = limit;
 				collecting = false;
 				fullCount = 0;
+
+				resourceManager.ResourceUpdate ();
 			} else {
 				count = (int)fullCount + collectingBase;
+
+				resourceManager.ResourceUpdate ();
 			}
 		}
 	}

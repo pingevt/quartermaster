@@ -13,9 +13,14 @@ public class BaseResource : MonoBehaviour {
 	public double fullCount = 0;
 	public int limit = 10;
 
+	protected ResourceManager resourceManager;
+
 	// Use this for initialization
 	void Start () {
-
+		resourceManager = FindObjectOfType<ResourceManager>();
+		if (!resourceManager) {
+			Debug.LogWarning ("No Resource Manager");
+		}
 	}
 
 	// Update is called once per frame
@@ -39,12 +44,15 @@ public class BaseResource : MonoBehaviour {
 		}
 
 		return false;
-  }
+	}
 
-  public virtual bool AddResources(int addCount) {
+	public virtual bool AddResources(int addCount) {
 		count += addCount;
+
+		resourceManager.ResourceUpdate ();
+
 		return true;
-  }
+	}
 
 	public virtual float GetSliderValue() {
 		float amt = (float) (fullCount - Math.Truncate(fullCount));

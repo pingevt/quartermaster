@@ -68,7 +68,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingId: iron_mine
   buildingTitle: Iron Mine
-  cost: 500
+  cost: 100
   buildLimit: 1
   buildingImage: {fileID: 21300000, guid: eea5cacef6cfc41f8b7d6cf8c99530fd, type: 3}
   itemPrefab: {fileID: 1425040117364608, guid: eaa76ef6b5acb427e94572e71791815a, type: 2}

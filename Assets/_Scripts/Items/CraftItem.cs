@@ -16,13 +16,17 @@ public class CraftItem : MonoBehaviour {
 	// Base Props
 	public int baseAttack = 0;
 	public int baseDefense = 0;
+	public int baseSellPrice = 0;
 
 	[Space(10)]
 	// Props
 	public int attack = 0;
 	public int defense = 0;
+	public int sellPrice = 0;
 
 	protected WarehouseManager warehouseManager;
+	protected Player player;
+	protected BaseStorageBuilding warehouse;
 
 	// Use this for initialization
 	void Start () {
@@ -30,6 +34,11 @@ public class CraftItem : MonoBehaviour {
 		warehouseManager = FindObjectOfType<WarehouseManager>();
 		if (!warehouseManager) {
 			Debug.LogWarning ("No Warehouse Manager");
+		}
+
+		player = FindObjectOfType<Player>();
+		if (!player) {
+			Debug.LogWarning ("No Player");
 		}
 
 		StartCrafting ();
@@ -93,5 +102,18 @@ public class CraftItem : MonoBehaviour {
 	protected void SetItemProps() {
 		attack = baseAttack;
 		defense = baseDefense;
+		sellPrice = baseSellPrice;
+	}
+
+	public void setWarehouse(GameObject wh) {
+		warehouse = wh.GetComponent<BaseStorageBuilding> ();
+	}
+
+	public void sellItem() {
+		if (!crafting) {
+			player.sellItem (sellPrice);
+			warehouse.removeItem (this.gameObject);
+			Destroy (this.gameObject);
+		}
 	}
 }

@@ -9,10 +9,11 @@ public class CraftingSlot : MonoBehaviour {
 
 	public bool busy = false;
 
-	CraftingManager craftingManager;
 
-	private GameObject currentCraftObj;
-  	private Recipe currentCraftRecipe;
+	public GameObject currentCraftObj;
+	public Recipe currentCraftRecipe;
+
+	public CraftingManager craftingManager;
 
 	void Start () {
 		craftingManager = FindObjectOfType<CraftingManager>();

@@ -53,4 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lvl: 1
   exp: 0
-  storageCapacity: 5
+  storageCapacity: 25
+  storage: []

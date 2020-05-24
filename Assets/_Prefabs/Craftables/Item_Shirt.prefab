@@ -55,7 +55,9 @@ MonoBehaviour:
   craftingSlot: {fileID: 0}
   craftingStartTime: 0
   craftingTimeLength: 0
-  baseAttack: 2
-  baseDefense: 1
+  baseAttack: 1
+  baseDefense: 2
+  baseSellPrice: 5
   attack: 0
   defense: 0
+  sellPrice: 0

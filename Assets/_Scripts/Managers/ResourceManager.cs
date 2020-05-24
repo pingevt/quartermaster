@@ -11,8 +11,15 @@ public class ResourceManager : MonoBehaviour {
 
 	public Dictionary<string, GameObject> resourceDict = new Dictionary<string, GameObject>();
 
+	private CraftingManager craftingManager;
+
 	// Use this for initialization
 	void Start () {
+		craftingManager = FindObjectOfType<CraftingManager>();
+		if (!craftingManager) {
+			Debug.LogWarning ("No Crafting Manager");
+		}
+
 		foreach (GameObject resource in renewableResources) {
 			GameObject go = Instantiate(resource, transform.position, transform.rotation) as GameObject;
 			go.transform.parent = transform;
@@ -99,7 +106,9 @@ public class ResourceManager : MonoBehaviour {
 		return true;
 	}
 
-
+	public void ResourceUpdate() {
+		craftingManager.checkQueue ();
+	}
 
 
 

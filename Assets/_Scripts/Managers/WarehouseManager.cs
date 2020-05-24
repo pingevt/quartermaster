@@ -32,8 +32,10 @@ public class WarehouseManager : MonoBehaviour {
 	public void storeItem(GameObject item) {
 		// Search All Warehouses for storage.
 		foreach (GameObject warehouseGO in warehouses) {
-			if (warehouseGO.GetComponent<BaseStorageBuilding> ().hasSpace ())
-				warehouseGO.GetComponent<BaseStorageBuilding> ().storeItem(item);
+			if (warehouseGO.GetComponent<BaseStorageBuilding> ().hasSpace ()) {
+				warehouseGO.GetComponent<BaseStorageBuilding> ().storeItem (item);
+				item.GetComponent<CraftItem> ().setWarehouse (warehouseGO);
+			}
 		}
 	}
 

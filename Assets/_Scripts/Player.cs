@@ -23,4 +23,8 @@ public class Player : MonoBehaviour
 	public void charge(int amount) {
 		monies -= amount;
 	}
+
+	public void sellItem(int amount) {
+		monies += amount;
+	}
 }

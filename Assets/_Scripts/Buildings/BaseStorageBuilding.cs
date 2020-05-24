@@ -35,4 +35,10 @@ public class BaseStorageBuilding : BaseBuilding {
 	public void storeItem(GameObject item) {
 		storage.Add (item);
 	}
+
+	public void removeItem(GameObject item) {
+		
+		int index = storage.IndexOf(item);
+		storage.RemoveAt (index);
+	}
 }

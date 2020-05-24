@@ -9,6 +9,10 @@ public class CollectableResource : BaseResource {
 
 	// Use this for initialization
 	void Start () {
+		resourceManager = FindObjectOfType<ResourceManager>();
+		if (!resourceManager) {
+			Debug.LogWarning ("No Resource Manager");
+		}
 
     // CollectableResourceData savedData = Load ();
 

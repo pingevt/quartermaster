@@ -52,7 +52,11 @@ public class UI_CraftingController : MonoBehaviour {
 	}
 
 	public void ChangedCrafting(string index) {
-		slotUIDict[index].GetComponent<CraftingSlotElementUI>().SetInactive();
+//		slotUIDict[index].GetComponent<CraftingSlotElementUI>().SetInactive();
+//		slotUIDict[index].GetComponent<CraftingSlotElementUI>().SetActive();
+	}
+
+	public void SetUIElementActive(string index) {
 		slotUIDict[index].GetComponent<CraftingSlotElementUI>().SetActive();
 	}
 

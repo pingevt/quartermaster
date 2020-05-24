@@ -602,7 +602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerID: 1234abc-2
-  monies: 1100
+  monies: 700000
 --- !u!114 &946910930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1067,3 +1067,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7215cf4c6d53f465da036483216d8df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  warehouses: []
