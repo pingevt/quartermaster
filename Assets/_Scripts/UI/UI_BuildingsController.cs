@@ -76,7 +76,7 @@ public class UI_BuildingsController : MonoBehaviour
 
 		// Set Scroll Height.
 		float contentHeight = (newY * -1) + buttonHeight + 10;
-		canvas.GetComponentInChildren<BuildingScrollUI>().SetContentHeight(contentHeight);
+		canvas.GetComponentInChildren<ScrollUI>().SetContentHeight(contentHeight);
     }
 
 	void ClickedBuildingBUtton(string building_id) {

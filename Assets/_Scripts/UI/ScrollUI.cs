@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildingScrollUI : MonoBehaviour {
+public class ScrollUI : MonoBehaviour {
 
 	public RectTransform content;
 

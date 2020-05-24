@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipeID: staff
+  recipeTitle: Staff
   resourceNeeds:
   - resourceID: wood
     count: 0

@@ -251,6 +251,7 @@ GameObject:
   - component: {fileID: 273172919}
   - component: {fileID: 273172918}
   - component: {fileID: 273172917}
+  - component: {fileID: 273172921}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -334,6 +335,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &273172921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 273172916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dcd145729fa94f4da04d0e7455efc41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &356039111
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,7 +920,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf3d98338f63b4b368805c7aaf9edc07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIPrefab: {fileID: 1816384813986678, guid: 8db0cbd3c5e9c402ca956f2508432fa0, type: 2}
+  UIPrefab: {fileID: 1585725609354940, guid: d7cecb5bfd2d1466c9a979fb2f267f6d, type: 2}
+  UIScrollerPrefab: {fileID: 1794028094067780, guid: 3cdbe0047360a489ab4942b72ee3b7d4,
+    type: 2}
   canvas: {fileID: 273172919}
   recipeSpacing: 60
 --- !u!1 &1692419521

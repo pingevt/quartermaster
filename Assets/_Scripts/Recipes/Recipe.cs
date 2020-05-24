@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Recipe : MonoBehaviour {
 
 	public string recipeID = "";
+	public string recipeTitle = "";
 	public List<ResourceNeed> resourceNeeds;
 	public double baseCraftTime; // in seconds.
 

@@ -35,6 +35,41 @@ public class RecipeManager : MonoBehaviour {
 		craftingManager.AddToQueue(recipeDict[recipeId].GetComponent<Recipe>());
 	}
 
+	public bool ProvideRecipe(GameObject rec_prefab) {
+		Recipe recipe = rec_prefab.GetComponent<Recipe> ();
+
+		// Check if it is a blueprint.
+		if (recipe == null) {
+			Debug.LogWarning ("No recipe");
+			return false;
+		}
+
+		// Check if already available.
+		if (recipeDict.ContainsKey (recipe.recipeID)) {
+
+			Debug.LogWarning ("Already in the system");
+
+			return false;
+		}
+
+		// Instantiate and add to list.
+		GameObject go = Instantiate(rec_prefab, transform.position, transform.rotation) as GameObject;
+		go.transform.parent = transform;
+
+		recipeDict.Add (go.GetComponent<Recipe>().recipeID, go);
+
+
+		return true; 
+	}
+
+	public bool ProvideRecipes(RecipeProvider recp) {
+
+		foreach (GameObject recipe_prefab in recp.objects) {
+			bool provided = ProvideRecipe (recipe_prefab);
+		}
+
+		return true;
+	}
 
 
 

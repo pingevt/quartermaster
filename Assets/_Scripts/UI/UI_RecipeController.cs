@@ -9,6 +9,8 @@ using UnityEngine.UI;
 public class UI_RecipeController : MonoBehaviour {
 
 	public GameObject UIPrefab;
+	public GameObject UIScrollerPrefab;
+	protected GameObject UIScroller;
 	public Canvas canvas;
 
 	public int recipeSpacing = 50;
@@ -29,6 +31,10 @@ public class UI_RecipeController : MonoBehaviour {
 		if (!craftingManager) {
 			Debug.LogWarning ("No Crafting Manager");
 		}
+
+		// Instantiate Scroll View.
+		UIScroller = Instantiate(UIScrollerPrefab, UIScrollerPrefab.transform.position, UIScrollerPrefab.transform.rotation) as GameObject;
+		UIScroller.transform.SetParent(canvas.transform, false);
 	}
 
 	// Update is called once per frame
@@ -45,29 +51,33 @@ public class UI_RecipeController : MonoBehaviour {
 
 	public void AddRecipeSlider(string type, GameObject resource) {
 
+		int index = recipeUIDict.Count;
+
 		GameObject button = Instantiate(UIPrefab, new Vector3 (0f, 0f, 0f), canvas.transform.rotation) as GameObject;
-		button.transform.SetParent (canvas.transform);
+		button.transform.SetParent(UIScroller.transform.GetChild(0).transform.GetChild(0), false);
 
 		RectTransform rt = button.GetComponent<RectTransform> ();
 
-		Vector3 newPos = new Vector3 (0f, (recipeSpacing * recipeUIDict.Count), 0f);
-		rt.anchoredPosition = newPos;
+		float buttonHeight = (rt.sizeDelta.y);
+		float newY = ((30 * index) + (rt.sizeDelta.y * index)) * -1 + rt.anchoredPosition.y;
 
+		Vector3 newPos = new Vector3 (rt.anchoredPosition.x, newY, 0f);
+		rt.anchoredPosition = newPos;
 		recipeUIDict.Add (type, button);
 
 		// Set Image.
-		Sprite sp = resource.GetComponent<Recipe> ().recipeImage;
-		button.GetComponent<RecipeElementUI> ().SetSprite(sp);
+		Recipe recipe = resource.GetComponent<Recipe> ();
+		Sprite sp = recipe.recipeImage;
+		button.GetComponent<RecipeElementUI> ().SetSprite(sp); 
+
+		// Set Title.
+		button.GetComponent<RecipeElementUI>().SetTitle(recipe.recipeTitle);
 
 		// Set Button
 		resource.GetComponent<Recipe> ().AddButton (button.GetComponentInChildren<Button>());
-	}
 
-//	public void UpdateResoureSlider (ResourceType type) {
-//		BaseResource resource = recipeManager.recipeDict [type].GetComponent<BaseResource> ();
-//		GameObject sliderGO = recipeUIDict[type];
-//
-//		sliderGO.GetComponent<ResourceUI> ().SetSliderVal(resource.GetSliderValue());
-//		sliderGO.GetComponent<ResourceUI> ().SetCount(resource.count.ToString());
-//	}
+		// Set Scroll Height.
+		float contentHeight = (newY * -1) + buttonHeight + 10;
+		canvas.GetComponentInChildren<ScrollUI>().SetContentHeight(contentHeight);
+	}
 }

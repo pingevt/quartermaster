@@ -51,7 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49583a02b9ac043bb9d31490b9cb5471, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recipeID: sword
+  recipeID: Sword
+  recipeTitle: 
   resourceNeeds:
   - resourceID: iron
     count: 1

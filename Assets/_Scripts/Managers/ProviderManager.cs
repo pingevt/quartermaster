@@ -19,6 +19,13 @@ public class ProviderManager : MonoBehaviour {
 			}
 		}
 
+		RecipeProvider[] recProviders = item.GetComponents<RecipeProvider> ();
+		if (recProviders.Length >= 1) {
+			foreach (RecipeProvider recp in recProviders) {
+				recipeManager.ProvideRecipes (recp);
+			}
+		}
+
 		CraftSlotProvider[] csProviders = item.GetComponents<CraftSlotProvider> ();
 		if (csProviders.Length >= 1) {
 			foreach (CraftSlotProvider csp in csProviders) {
