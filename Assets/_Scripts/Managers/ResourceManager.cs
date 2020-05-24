@@ -7,9 +7,9 @@ public class ResourceManager : MonoBehaviour {
 
 	public GameObject[] renewableResources;
 	public GameObject[] gatherableResources;
-  public GameObject[] collectableResources;
+  	public GameObject[] collectableResources;
 
-	public Dictionary<ResourceType, GameObject> resourceDict = new Dictionary<ResourceType, GameObject>();
+	public Dictionary<string, GameObject> resourceDict = new Dictionary<string, GameObject>();
 
 	// Use this for initialization
 	void Start () {
@@ -17,21 +17,21 @@ public class ResourceManager : MonoBehaviour {
 			GameObject go = Instantiate(resource, transform.position, transform.rotation) as GameObject;
 			go.transform.parent = transform;
 
-			resourceDict.Add (go.GetComponent<BaseResource>().baseID, go);
+			resourceDict.Add (go.GetComponent<BaseResource>().resourceId, go);
 		}
 
 		foreach (GameObject resource in gatherableResources) {
 			GameObject go = Instantiate(resource, transform.position, transform.rotation) as GameObject;
 			go.transform.parent = transform;
 
-			resourceDict.Add (go.GetComponent<BaseResource>().baseID, go);
+			resourceDict.Add (go.GetComponent<BaseResource>().resourceId, go);
 		}
 
 		foreach (GameObject resource in collectableResources) {
 			GameObject go = Instantiate(resource, transform.position, transform.rotation) as GameObject;
 			go.transform.parent = transform;
 
-			resourceDict.Add (go.GetComponent<BaseResource>().baseID, go);
+			resourceDict.Add (go.GetComponent<BaseResource>().resourceId, go);
 		}
 	}
 
@@ -44,7 +44,7 @@ public class ResourceManager : MonoBehaviour {
 		bool avail = true;
 
 		foreach (ResourceNeed need in resources) {
-			if (!resourceDict [need.resourceID].GetComponent<BaseResource>().CheckAvailable (need.resourceCount)) {
+			if (!resourceDict [need.resourceID].GetComponent<BaseResource>().CheckAvailable (need.count)) {
 				avail = false;
 			}
 		}
@@ -55,22 +55,53 @@ public class ResourceManager : MonoBehaviour {
 	public bool ConsumeResources(List<ResourceNeed> resources) {
 
 		foreach (ResourceNeed need in resources) {
-//			resourceDict [need.resourceID].GetComponent<BaseResource> ().UseResources (need.resourceCount);
-			ConsumeResource(need.resourceID, need.resourceCount);
+			ConsumeResource(need.resourceID, need.count);
 		}
 
 		return true;
 	}
 
-	public void ConsumeResource(ResourceType type, int count) {
+	public void ConsumeResource(string resource_id, int count) {
 
-		resourceDict [type].GetComponent<BaseResource> ().UseResources (count);
+//		resourceDict [resource_id].GetComponent<BaseResource> ().UseResources (count);
+	}
+
+	public bool ProvideResource(GameObject resourceGO) {
+		BaseResource resource = resourceGO.GetComponent<BaseResource> ();
+
+		// Check if it is a blueprint.
+		if (resource == null) {
+			Debug.LogWarning ("No resource");
+			return false;
+		}
+
+		// Check if already available. 
+		if (resourceDict.ContainsKey (resource.resourceId)) {
+			Debug.LogWarning ("Already in the system");
+			return false;
+		}
+
+		// Instantiate and add to list.
+		GameObject go = Instantiate(resourceGO, transform.position, transform.rotation) as GameObject;
+		go.transform.parent = transform;
+
+		resourceDict.Add (go.GetComponent<BaseResource>().resourceId, go);
+
+		return true; 
 	}
 
 
+	public bool ProvideResources(ResourceProvider rp) {
+		Debug.Log (rp.objects);
 
+		foreach (GameObject resource in rp.objects) {
+			Debug.Log (resource.name);
+			bool provided = ProvideResource (resource);
+			Debug.Log (provided);
+		}
 
-
+		return true;
+	}
 
 
 
@@ -104,10 +135,10 @@ public class ResourceManager : MonoBehaviour {
 
 }
 
-public enum ResourceType {
-	iron,
-	wood,
-	herbs,
-	cotton,
-	rock,
-}
+//public enum ResourceType {
+//	iron,
+//	wood,
+//	herbs,
+//	cotton,
+//	rock,
+//}

@@ -53,7 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recipeID: shirt
   resourceNeeds:
-  - resourceID: 3
+  - resourceID: cotton
     resourceCount: 3
   baseCraftTime: 30
   itemPrefab: {fileID: 1723797981108156, guid: 3e4e72b33f54a45d08584e1513ec1c89, type: 2}

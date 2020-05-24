@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7109c56a3937d4982a9f8fdebdb35d2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseID: 2
+  resourceId: herbs
   count: 0
   fullCount: 0
   limit: 20

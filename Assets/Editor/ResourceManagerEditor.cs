@@ -13,7 +13,7 @@ public class ResourceManagerEditor : Editor {
 
 			ResourceManager script = (ResourceManager)target;
 	
-			foreach(KeyValuePair<ResourceType, GameObject> entry in script.resourceDict) {
+			foreach(KeyValuePair<string, GameObject> entry in script.resourceDict) {
 				
 				EditorGUILayout.Space();
 				EditorGUILayout.Space();

@@ -53,8 +53,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recipeID: sword
   resourceNeeds:
-  - resourceID: 0
-    resourceCount: 2
-  baseCraftTime: 10
+  - resourceID: iron
+    count: 1
+  - resourceID: iron
+    count: 0
+  - resourceID: iron
+    count: 0
+  baseCraftTime: 10.07
   itemPrefab: {fileID: 1736748792115386, guid: c1fd5d9fd62324c6ebfd4dfe640e4042, type: 2}
   recipeImage: {fileID: 21300000, guid: 82bc2a4eb23b9434882a275cd04b9ac5, type: 3}

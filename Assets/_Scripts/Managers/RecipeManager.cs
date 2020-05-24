@@ -52,17 +52,16 @@ public class RecipeManager : MonoBehaviour {
 		craftingManager.AddToQueue(recipeDict["staff"].GetComponent<Recipe>());
 	}
 }
-
-
+	
 [System.Serializable]
 public class ResourceNeed {
 
-	public ResourceType resourceID;
-	public int resourceCount;
+	public string resourceID;
+	public int count;
 
-	public ResourceNeed(ResourceType id, int count) {
+	public ResourceNeed(string id, int count) {
 		resourceID = id;
-		resourceCount = count;
+		count = count;
 	}
 
 	public ResourceNeed() {

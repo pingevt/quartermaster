@@ -16,7 +16,7 @@ public class RenewableResource : BaseResource {
 	void Start () {
 		// RenewableResourceData savedData = Load ();
 		// if (savedData.empty) {
-		// 	startCollecting ();
+		 	startCollecting ();
 		// } else {
 		// 	count = savedData.count;
 		// 	fullCount = savedData.fullCount;

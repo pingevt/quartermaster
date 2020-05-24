@@ -53,8 +53,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recipeID: staff
   resourceNeeds:
-  - resourceID: 1
-    resourceCount: 2
+  - resourceID: wood
+    count: 0
+  - resourceID: wood
+    count: 0
+  - resourceID: iron
+    count: 0
   baseCraftTime: 10
   itemPrefab: {fileID: 1688985230140258, guid: b0ea72d7acbb64834ac1a154617c0142, type: 2}
   recipeImage: {fileID: 21300000, guid: 9282956118341437db3c6385e6364df3, type: 3}

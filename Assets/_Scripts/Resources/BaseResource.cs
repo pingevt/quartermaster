@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class BaseResource : MonoBehaviour {
 
-	public ResourceType baseID;
+//	public ResourceType baseID;
+
+	public string resourceId;
 
 	public int count = 0;
 	public double fullCount = 0;

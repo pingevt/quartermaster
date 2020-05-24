@@ -14,7 +14,7 @@ public class UI_ResourceController : MonoBehaviour {
 
 	protected ResourceManager resourceManager;
 
-	public Dictionary<ResourceType, GameObject> resourceUIDict = new Dictionary<ResourceType, GameObject>();
+	public Dictionary<string, GameObject> resourceUIDict = new Dictionary<string, GameObject>();
 
 	// Use this for initialization
 	void Start () {
@@ -26,7 +26,7 @@ public class UI_ResourceController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		foreach (KeyValuePair<ResourceType, GameObject> resource in resourceManager.resourceDict) {
+		foreach (KeyValuePair<string, GameObject> resource in resourceManager.resourceDict) {
 			if (resourceUIDict.ContainsKey (resource.Key)) {
 				UpdateResoureSlider (resource.Key);
 			} else {
@@ -35,7 +35,7 @@ public class UI_ResourceController : MonoBehaviour {
 		}
 	}
 
-	public void AddResourceSlider(ResourceType type, GameObject resource) {
+	public void AddResourceSlider(string type, GameObject resource) {
 
 		GameObject slider = Instantiate(sliderPrefab, new Vector3 (0f, 0f, 0f), canvas.transform.rotation) as GameObject;
 		slider.transform.SetParent (canvas.transform);
@@ -49,10 +49,10 @@ public class UI_ResourceController : MonoBehaviour {
 		resourceUIDict.Add (type, slider);
 
 		// Set Label.
-		slider.GetComponent<ResourceElementUI> ().SetLabel(resource.GetComponent<BaseResource> ().baseID.ToString());
+		slider.GetComponent<ResourceElementUI> ().SetLabel(resource.GetComponent<BaseResource> ().resourceId.ToString());
 	}
 
-	public void UpdateResoureSlider (ResourceType type) {
+	public void UpdateResoureSlider (string type) {
 		BaseResource resource = resourceManager.resourceDict [type].GetComponent<BaseResource> ();
 		GameObject sliderGO = resourceUIDict[type];
 
