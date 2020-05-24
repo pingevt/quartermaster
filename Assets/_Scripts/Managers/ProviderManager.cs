@@ -5,9 +5,10 @@ using UnityEngine;
 public class ProviderManager : MonoBehaviour {
 
 	public ResourceManager resourceManager;
+	public RecipeManager recipeManager;
+	public CraftingManager craftingManager;
 	public BuildingManager buildingManager;
-
-
+	public WarehouseManager warehouseManager;
 
 	public void CheckProviders(GameObject item) {
 
@@ -15,6 +16,13 @@ public class ProviderManager : MonoBehaviour {
 		if (rProviders.Length >= 1) {
 			foreach (ResourceProvider rp in rProviders) {
 				resourceManager.ProvideResources (rp);
+			}
+		}
+
+		CraftSlotProvider[] csProviders = item.GetComponents<CraftSlotProvider> ();
+		if (csProviders.Length >= 1) {
+			foreach (CraftSlotProvider csp in csProviders) {
+				craftingManager.ProvideCraftSlots (csp);
 			}
 		}
 

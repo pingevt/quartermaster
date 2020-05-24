@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class CraftingSlot {
+public class CraftingSlot : MonoBehaviour {
+
+	public string craftingSlotId;
 
 	public bool busy = false;
 

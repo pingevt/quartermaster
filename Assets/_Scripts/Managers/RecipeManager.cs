@@ -59,9 +59,9 @@ public class ResourceNeed {
 	public string resourceID;
 	public int count;
 
-	public ResourceNeed(string id, int count) {
+	public ResourceNeed(string id, int ct) {
 		resourceID = id;
-		count = count;
+		count = ct;
 	}
 
 	public ResourceNeed() {

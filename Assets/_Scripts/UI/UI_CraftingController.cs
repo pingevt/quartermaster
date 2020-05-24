@@ -11,7 +11,7 @@ public class UI_CraftingController : MonoBehaviour {
 
 	protected CraftingManager craftingManager;
 
-	public Dictionary<int, GameObject> slotUIDict = new Dictionary<int, GameObject>();
+	public Dictionary<string, GameObject> slotUIDict = new Dictionary<string, GameObject>();
 
 	// Use this for initialization
 	void Start () {
@@ -23,19 +23,20 @@ public class UI_CraftingController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		foreach (CraftingSlot slot in craftingManager.slots) {
+		foreach (KeyValuePair<string, GameObject> slotGO in craftingManager.craftingSlotsDict) {
 
-			int index = craftingManager.slots.IndexOf (slot);
-
-			if (slotUIDict.ContainsKey (index)) {
+			if (slotUIDict.ContainsKey (slotGO.Key)) {
 //				UpdateSlotUI (index, slot);
 			} else {
-				AddSlotUI (index, slot);
+				AddSlotUI (slotGO.Key, slotGO.Value);
 			}
 		}
 	}
 
-	void AddSlotUI(int index, CraftingSlot slot) {
+	void AddSlotUI(string slot_id, GameObject slotGO) {
+
+		CraftingSlot slot = slotGO.GetComponent<CraftingSlot> ();
+		
 		GameObject button = Instantiate(UIPrefab, new Vector3 (0f, 0f, 0f), canvas.transform.rotation) as GameObject;
 		button.transform.SetParent (canvas.transform);
 
@@ -46,15 +47,16 @@ public class UI_CraftingController : MonoBehaviour {
 
 		button.GetComponent<CraftingSlotElementUI>().SetSlot (slot);
 
-		slotUIDict.Add (index, button);
+		slotUIDict.Add (slot_id, button);
+
 	}
 
-	public void ChangedCrafting(int index) {
-    slotUIDict[index].GetComponent<CraftingSlotElementUI>().SetInactive();
-    slotUIDict[index].GetComponent<CraftingSlotElementUI>().SetActive();
-  }
+	public void ChangedCrafting(string index) {
+		slotUIDict[index].GetComponent<CraftingSlotElementUI>().SetInactive();
+		slotUIDict[index].GetComponent<CraftingSlotElementUI>().SetActive();
+	}
 
-	public void FinishedCrafting(int index) {
+	public void FinishedCrafting(string index) {
 		if (slotUIDict.ContainsKey(index))
 			slotUIDict[index].GetComponent<CraftingSlotElementUI>().SetInactive();
 	}
