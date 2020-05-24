@@ -9,35 +9,52 @@ public class CraftingSlot : MonoBehaviour {
 
 	public bool busy = false;
 
-	CraftingManager manager;
+	CraftingManager craftingManager;
 
 	private GameObject currentCraftObj;
   	private Recipe currentCraftRecipe;
 
-	public CraftingSlot(CraftingManager m) {
-		manager = m;
+	void Start () {
+		craftingManager = FindObjectOfType<CraftingManager>();
+		if (!craftingManager) {
+			Debug.LogWarning ("No Crafting Manager");
+		}
+
 	}
 
 	public bool CanCraft (Recipe item) {
-		// Debug.Log ("CanCraft:" + !busy);
+		Debug.Log ("Checking Can Craft: !" + busy.ToString ());
 		return !busy;
 	}
 
-	public void Craft (Recipe item) {
+	public bool TryToCraft (Recipe recipe) {
 		busy = true;
-		currentCraftObj = item.CraftItem (this);
-    	currentCraftRecipe = item;
+
+		currentCraftObj = recipe.BeginCraftItem (this);
+
+		if (currentCraftObj != null) {
+			currentCraftRecipe = recipe;
+
+			Debug.Log (currentCraftRecipe.recipeTitle);
+
+			return true;
+		}
+
+		busy = false;
+
+		return false;
+
 	}
 
 	public void ItemFinishedCrafting() {
 		currentCraftObj = null;
     	currentCraftRecipe = null;
 		busy = false;
-		manager.checkQueue (this);
+		craftingManager.checkQueue (this);
 	}
 
 	public CraftingManager GetCraftingManager() {
-		return manager;
+		return craftingManager;
 	}
 
 	public float GetProgress() {

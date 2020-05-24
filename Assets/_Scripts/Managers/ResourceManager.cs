@@ -63,7 +63,7 @@ public class ResourceManager : MonoBehaviour {
 
 	public void ConsumeResource(string resource_id, int count) {
 
-//		resourceDict [resource_id].GetComponent<BaseResource> ().UseResources (count);
+		resourceDict [resource_id].GetComponent<BaseResource> ().UseResources (count);
 	}
 
 	public bool ProvideResource(GameObject resourceGO) {
@@ -92,12 +92,9 @@ public class ResourceManager : MonoBehaviour {
 
 
 	public bool ProvideResources(ResourceProvider rp) {
-		Debug.Log (rp.objects);
 
 		foreach (GameObject resource in rp.objects) {
-			Debug.Log (resource.name);
-			bool provided = ProvideResource (resource);
-			Debug.Log (provided);
+			ProvideResource (resource);
 		}
 
 		return true;

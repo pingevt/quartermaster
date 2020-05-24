@@ -24,7 +24,9 @@ public class BaseResource : MonoBehaviour {
 	}
 
 	public virtual bool CheckAvailable(int checkCount) {
-		if (checkCount < count)
+
+		Debug.Log ("Checking => req: " + checkCount.ToString () + " amt: " + count.ToString ());
+		if (checkCount <= count)
 			return true;
 
 		return false;

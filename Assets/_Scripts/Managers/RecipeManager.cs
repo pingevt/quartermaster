@@ -65,7 +65,7 @@ public class RecipeManager : MonoBehaviour {
 	public bool ProvideRecipes(RecipeProvider recp) {
 
 		foreach (GameObject recipe_prefab in recp.objects) {
-			bool provided = ProvideRecipe (recipe_prefab);
+			ProvideRecipe (recipe_prefab);
 		}
 
 		return true;
@@ -101,5 +101,9 @@ public class ResourceNeed {
 
 	public ResourceNeed() {
 
+	}
+
+	public override string ToString() {
+		return resourceID + "::" + count.ToString ();
 	}
 }

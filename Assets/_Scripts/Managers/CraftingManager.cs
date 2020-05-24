@@ -21,58 +21,45 @@ public class CraftingManager : MonoBehaviour {
 
 	}
 
-//	public void AddCraftingSlot(GameObject slotGO) {
-//		CraftingSlot slot = slotGO.GetComponent<CraftingSlot> ();
-//		if (slot == null) {
-//			Debug.LogWarning ("No crafting Slot");
-//			return;
-//		}
-//
-//		// Check if already available.
-//		if (craftingSlotsDict.ContainsKey (slot.craftingSlotId)) {
-//			Debug.LogWarning ("Crafting Slot already in the system");
-//			return;
-//		}
-//
-//		craftingSlotsDict.Add (slot.craftingSlotId, slotGO);
-////		CraftingSlot ns = new CraftingSlot (this);
-////		craftingSlotsDict.Add (ns);
-////		checkQueue (ns);
-//	}
-
 	public void AddToQueue(Recipe item) {
-//		queue.Add (item);
-//		checkQueue ();
+		queue.Add (item);
+		checkQueue ();
 	}
 
 	public void checkQueue() {
-//		foreach (CraftingSlot slot in slots) {
-//			checkQueue (slot);
-//		}
+		foreach (KeyValuePair<string, GameObject> item in craftingSlotsDict) {
+			Debug.Log (item.Key);
+
+			CraftingSlot slot = item.Value.GetComponent<CraftingSlot> ();
+			checkQueue (slot);
+		}
 	}
 
 	public void checkQueue(CraftingSlot slot) {
-//		foreach (Recipe item in queue) {
-//			if (slot.CanCraft (item)) {
-//				slot.Craft (item);
-//
-//				// Remove from Queue.
-//				queue.RemoveAt (queue.IndexOf(item));
-//
-//				// Tell UI Manager...
-//				gameObject.SendMessage("ChangedCrafting", slots.IndexOf(slot));
-//
-//				return;
-//			}
-//		}
-//
-//    	gameObject.SendMessage("FinishedCrafting", slots.IndexOf(slot));
+		foreach (Recipe item in queue) {
+			if (slot.CanCraft (item)) {
+				if (slot.TryToCraft (item)) {
+
+					// Remove from Queue.
+					queue.RemoveAt (queue.IndexOf (item));
+
+					// Tell UI Manager...
+					gameObject.SendMessage ("ChangedCrafting", slot.craftingSlotId);
+
+					return;
+				} else {
+					Debug.LogWarning ("Tried, but could not");
+					return;
+				}
+			}
+		}
+
+		gameObject.SendMessage("FinishedCrafting", slot.craftingSlotId);
 	}
 
 	public bool ProvideCraftSlot(GameObject slotGO) {
 		
 		CraftingSlot slot = slotGO.GetComponent<CraftingSlot> ();
-		Debug.Log (slot.craftingSlotId);
 		if (slot == null) {
 			Debug.LogWarning ("No crafting Slot");
 			return false;

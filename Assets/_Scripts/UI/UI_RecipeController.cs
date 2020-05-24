@@ -49,7 +49,7 @@ public class UI_RecipeController : MonoBehaviour {
 		}
 	}
 
-	public void AddRecipeSlider(string type, GameObject resource) {
+	public void AddRecipeSlider(string type, GameObject recipeGO) {
 
 		int index = recipeUIDict.Count;
 
@@ -66,7 +66,7 @@ public class UI_RecipeController : MonoBehaviour {
 		recipeUIDict.Add (type, button);
 
 		// Set Image.
-		Recipe recipe = resource.GetComponent<Recipe> ();
+		Recipe recipe = recipeGO.GetComponent<Recipe> (); 
 		Sprite sp = recipe.recipeImage;
 		button.GetComponent<RecipeElementUI> ().SetSprite(sp); 
 
@@ -74,7 +74,7 @@ public class UI_RecipeController : MonoBehaviour {
 		button.GetComponent<RecipeElementUI>().SetTitle(recipe.recipeTitle);
 
 		// Set Button
-		resource.GetComponent<Recipe> ().AddButton (button.GetComponentInChildren<Button>());
+		recipe.AddButton (button.GetComponentInChildren<Button>());
 
 		// Set Scroll Height.
 		float contentHeight = (newY * -1) + buttonHeight + 10;

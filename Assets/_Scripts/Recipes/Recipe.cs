@@ -35,11 +35,6 @@ public class Recipe : MonoBehaviour {
 		
 	} 
 
-
-	//		button.GetComponentInChildren<Button> ().onClick.AddListener (m_MyFirstAction);
-	//		button.GetComponentInChildren<Button>().onClick.AddListener(resource.GetComponent<Recipe>().addToQueue());
-	//		button.GetComponentInChildren<Button>().onClick.AddListener(passQueue(resource));
-
 	public void AddButton (Button btn) {
 		btn.onClick.AddListener (addToQueue);
 	}
@@ -49,7 +44,9 @@ public class Recipe : MonoBehaviour {
 		recipeManager.queueRecipe (recipeID);
 	}
 
-	public GameObject CraftItem(CraftingSlot slot) {
+	public GameObject BeginCraftItem(CraftingSlot slot) {
+
+		Debug.Log ("Crafting Item: " + recipeTitle);
 
 		// Check Resource Availability and consume.
 		if (resourceManager.AvailableResources (resourceNeeds)) {
@@ -62,10 +59,10 @@ public class Recipe : MonoBehaviour {
 
 				return item;
 			} else {
-				Debug.LogWarning("Cannot consume resource: " + resourceNeeds.ToString());
+				Debug.LogWarning("Cannot consume resource: ");
 			}
 		} else {
-			Debug.LogWarning("Resrouces are not available: " + resourceNeeds.ToString());
+			Debug.LogWarning("Resrouces are not available: ");
 		}
 
 		return null;

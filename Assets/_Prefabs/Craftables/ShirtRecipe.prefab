@@ -55,7 +55,7 @@ MonoBehaviour:
   recipeTitle: Shirt
   resourceNeeds:
   - resourceID: cotton
-    count: 0
+    count: 1
   baseCraftTime: 30
   itemPrefab: {fileID: 1723797981108156, guid: 3e4e72b33f54a45d08584e1513ec1c89, type: 2}
   recipeImage: {fileID: 21300000, guid: fdf727f0ae01048f09f22d40b3c822d0, type: 3}

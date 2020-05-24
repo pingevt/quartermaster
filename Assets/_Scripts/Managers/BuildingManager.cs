@@ -137,12 +137,9 @@ public class BuildingManager : MonoBehaviour
 	}
 
 	public bool ProvideBuildings(BuildingProvider bp) {
-		Debug.Log (bp.objects);
 
 		foreach (GameObject building in bp.objects) {
-			Debug.Log (building.name);
 			bool provided = ProvideBuilding (building);
-			Debug.Log (provided);
 		}
 
 		return true;
