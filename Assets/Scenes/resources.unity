@@ -346,6 +346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dcd145729fa94f4da04d0e7455efc41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 0}
 --- !u!1 &356039111
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,7 +454,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   availableBuildingBlueprints:
   - {fileID: 1723964652445856, guid: f9c65cfb47c18490da7a0b95310e9d64, type: 2}
+  - {fileID: 1912233844211910, guid: c72de0786236f41c39452536e76630a5, type: 2}
+  - {fileID: 1685501186161152, guid: a5bf0dc9d60144a24b8e8f891ca0157a, type: 2}
   - {fileID: 1480774234426790, guid: c19e8f4bd6cc34148a82eb608490de92, type: 2}
+  - {fileID: 1681349814514138, guid: 3b98db07dfa334a048e0f704818cd6cd, type: 2}
 --- !u!114 &866049885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -598,7 +602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerID: 1234abc-2
-  monies: 1500
+  monies: 1100
 --- !u!114 &946910930
 MonoBehaviour:
   m_ObjectHideFlags: 0

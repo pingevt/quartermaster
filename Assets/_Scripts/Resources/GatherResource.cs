@@ -21,7 +21,7 @@ public class GatherResource : BaseResource {
 		// GatherResourceData savedData = Load ();
 
 		// if (savedData.empty) {
-		// 	startCollecting ();
+		 	startCollecting ();
 		// } else {
 		// 	count = savedData.count;
 		// 	collecting = savedData.collecting;

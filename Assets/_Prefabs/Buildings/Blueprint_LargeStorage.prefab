@@ -9,30 +9,30 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1622272629222172}
+  m_RootGameObject: {fileID: 1567766882068490}
   m_IsPrefabParent: 1
---- !u!1 &1622272629222172
+--- !u!1 &1567766882068490
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4009836612295448}
-  - component: {fileID: 114234180931613944}
+  - component: {fileID: 4220011766618256}
+  - component: {fileID: 114053985259577048}
   m_Layer: 0
-  m_Name: Cotton
+  m_Name: Blueprint_LargeStorage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4009836612295448
+--- !u!4 &4220011766618256
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1622272629222172}
+  m_GameObject: {fileID: 1567766882068490}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,23 +40,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114234180931613944
+--- !u!114 &114053985259577048
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1622272629222172}
+  m_GameObject: {fileID: 1567766882068490}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7109c56a3937d4982a9f8fdebdb35d2d, type: 3}
+  m_Script: {fileID: 11500000, guid: 87061341350b3429293772abe10e8dbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceId: cotton
-  count: 0
-  fullCount: 0
-  limit: 20
-  collecting: 0
-  collectingStartTime: 0
-  timeToGather: 10
-  collectMin: 2
-  collectMax: 5
+  buildingId: large_storage
+  buildingTitle: Large Storage
+  cost: 5000
+  buildLimit: 20
+  buildingImage: {fileID: 21300000, guid: 03628268a45a149d395af565620c6288, type: 3}
+  itemPrefab: {fileID: 1131076618514074, guid: f90596e6fdd55484caca8b04e558ba79, type: 2}

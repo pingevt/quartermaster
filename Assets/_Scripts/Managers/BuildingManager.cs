@@ -92,11 +92,13 @@ public class BuildingManager : MonoBehaviour
 
 		// Check price.
 		if (player.monies < blueprint.cost) {
+			Debug.LogWarning ("Building costs too much");
 			canBuild = false;
 		}
 
 		// Check build count.
 		if ((buildingCount [blueprint.buildingId] + 1) > blueprint.buildLimit) {
+			Debug.LogWarning ("Already Built Limit");
 			canBuild = false;
 		}
 
@@ -139,7 +141,7 @@ public class BuildingManager : MonoBehaviour
 	public bool ProvideBuildings(BuildingProvider bp) {
 
 		foreach (GameObject building in bp.objects) {
-			bool provided = ProvideBuilding (building);
+			ProvideBuilding (building);
 		}
 
 		return true;
