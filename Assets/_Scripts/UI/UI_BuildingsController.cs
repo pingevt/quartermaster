@@ -80,7 +80,7 @@ public class UI_BuildingsController : MonoBehaviour
     }
 
 	void ClickedBuildingBUtton(string building_id) {
-		Debug.Log (building_id);
+//		Debug.Log (building_id);
 		buildingManager.buildBuilding (building_id);
 	}
 }

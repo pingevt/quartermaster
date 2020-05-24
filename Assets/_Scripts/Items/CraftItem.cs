@@ -67,6 +67,19 @@ public class CraftItem : MonoBehaviour {
 			passedTime = Epoch.SecondsElapsed (Epoch.Current (), craftingStartTime);
 		}
 			
+//		FinishCrafting ();
+		StartCoroutine("CheckForStorage");
+	}
+
+	IEnumerator CheckForStorage() {
+		bool canStore = warehouseManager.canStoreItem (this.gameObject);
+
+		while (!canStore) {
+			yield return new WaitForSeconds (1f);
+			canStore = warehouseManager.canStoreItem (this.gameObject);
+		}
+
+		warehouseManager.storeItem (this.gameObject);
 		FinishCrafting ();
 	}
 
@@ -75,10 +88,6 @@ public class CraftItem : MonoBehaviour {
 		craftingSlot.ItemFinishedCrafting ();
 		craftingSlot = null;
 		SetItemProps ();
-
-		// Move to Warehouse.
-		// TODO: this should be a method so it goes to the correct postion.
-		transform.parent = warehouseManager.transform;
 	}
 
 	protected void SetItemProps() {

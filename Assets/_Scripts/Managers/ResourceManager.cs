@@ -90,7 +90,6 @@ public class ResourceManager : MonoBehaviour {
 		return true; 
 	}
 
-
 	public bool ProvideResources(ResourceProvider rp) {
 
 		foreach (GameObject resource in rp.objects) {

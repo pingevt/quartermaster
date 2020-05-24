@@ -40,7 +40,7 @@ public class Recipe : MonoBehaviour {
 	}
 
 	public void addToQueue() {
-		Debug.Log ("ADD TO QUEUE");
+//		Debug.Log ("ADD TO QUEUE");
 		recipeManager.queueRecipe (recipeID);
 	}
 

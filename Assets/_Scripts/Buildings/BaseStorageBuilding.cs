@@ -2,19 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseStorageBuilding : BaseBuilding
-{
-  public int storageCapacity = 0;
+public class BaseStorageBuilding : BaseBuilding {
+	
+  	public int storageCapacity;
+	public List<GameObject> storage;
 
-  // Start is called before the first frame update
-  void Start()
-    {
+	private WarehouseManager warehouseManager;
+
+
+	void Start() {
+		// Initiate warehouseManager.
+		warehouseManager = FindObjectOfType<WarehouseManager>();
+		if (!warehouseManager) {
+			Debug.LogWarning ("No WarehouseManager");
+		}
+
+		warehouseManager.ProvideWarehouse (gameObject);
+    }
+
+    void Update() {
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+	public bool hasSpace() {
+		return (storage.Count < storageCapacity);
+	}
 
-    }
+	public bool canStoreItem(GameObject item) {
+		return hasSpace();
+	}
+
+	public void storeItem(GameObject item) {
+		storage.Add (item);
+	}
 }
