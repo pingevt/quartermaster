@@ -58,6 +58,8 @@ MonoBehaviour:
   baseAttack: 0
   baseDefense: 3
   baseSellPrice: 5
+  baseExperienceGranted: 400
   attack: 0
   defense: 0
   sellPrice: 0
+  experienceGranted: 0

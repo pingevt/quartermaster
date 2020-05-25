@@ -17,12 +17,14 @@ public class CraftItem : MonoBehaviour {
 	public int baseAttack = 0;
 	public int baseDefense = 0;
 	public int baseSellPrice = 0;
+	public int baseExperienceGranted = 0;
 
 	[Space(10)]
 	// Props
 	public int attack = 0;
 	public int defense = 0;
 	public int sellPrice = 0;
+	public int experienceGranted = 0;
 
 	protected WarehouseManager warehouseManager;
 	protected Player player;
@@ -94,15 +96,18 @@ public class CraftItem : MonoBehaviour {
 
 	protected void FinishCrafting() {
 		crafting = false;
+
+		SetItemProps ();
+
 		craftingSlot.ItemFinishedCrafting ();
 		craftingSlot = null;
-		SetItemProps ();
 	}
 
 	protected void SetItemProps() {
 		attack = baseAttack;
 		defense = baseDefense;
 		sellPrice = baseSellPrice;
+		experienceGranted = baseExperienceGranted;
 	}
 
 	public void setWarehouse(GameObject wh) {

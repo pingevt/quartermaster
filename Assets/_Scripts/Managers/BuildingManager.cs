@@ -6,7 +6,11 @@ using UnityEngine.Rendering;
 public class BuildingManager : MonoBehaviour
 {
 
-    public List<GameObject> availableBuildingBlueprints;
+	public List<GameObject> availableBuildingBlueprintPrefabs;
+//	public List<GameObject> availableBuildingBlueprintGO;
+
+	public GameObject blueprintBucket;
+	public GameObject buildingBucket;
 
 	public Dictionary<string, GameObject> availableBlueprintsDict = new Dictionary<string, GameObject>();
 	public Dictionary<string, GameObject> buildableBlueprintsDict = new Dictionary<string, GameObject>();
@@ -32,10 +36,16 @@ public class BuildingManager : MonoBehaviour
 			Debug.LogWarning ("No providerManager");
 		}
 
-		foreach (GameObject b in availableBuildingBlueprints) {
-			availableBlueprintsDict.Add(b.GetComponent<Blueprint>().buildingId, b);
-			buildableBlueprintsDict.Add(b.GetComponent<Blueprint>().buildingId, b);
-			buildingCount.Add (b.GetComponent<Blueprint>().buildingId, 0);
+		foreach (GameObject bpPrefab in availableBuildingBlueprintPrefabs) {
+
+			// Instantiate and add to list.
+			GameObject go = Instantiate(bpPrefab, transform.position, transform.rotation) as GameObject;
+			go.transform.parent = blueprintBucket.transform;
+
+			Blueprint newBlueprint = go.GetComponent<Blueprint> ();
+			availableBlueprintsDict.Add(newBlueprint.buildingId, go);
+			buildableBlueprintsDict.Add(newBlueprint.buildingId, go);
+			buildingCount.Add (newBlueprint.buildingId, 0);
         }
 
 		updated = true;
@@ -69,13 +79,14 @@ public class BuildingManager : MonoBehaviour
 
 			// Add GO.
 			GameObject item = Instantiate (blueprint.itemPrefab, transform.position, transform.rotation) as GameObject;
-			item.transform.parent = transform;
+			item.transform.parent = buildingBucket.transform;
 
 			// Increment
 			buildingCount[building_id]++;
 
 			// Check For Providers.
 			providerManager.CheckProviders(blueprint.gameObject);
+			providerManager.CheckProviders(item.gameObject);
 
 			// Update Buildable list.
 			if (buildingCount[building_id] >= blueprint.buildLimit) {
@@ -110,8 +121,8 @@ public class BuildingManager : MonoBehaviour
 		return buildingGO.GetComponent<Blueprint> ();
 	}
 
-	public bool ProvideBuilding(GameObject blueprintGO) {
-		Blueprint blueprint = blueprintGO.GetComponent<Blueprint> ();
+	public bool ProvideBuilding(GameObject blueprintPrefab, GameObject providee) {
+		Blueprint blueprint = blueprintPrefab.GetComponent<Blueprint> ();
 
 		// Check if it is a blueprint.
 		if (blueprint == null) {
@@ -129,21 +140,28 @@ public class BuildingManager : MonoBehaviour
 			return false;
 		}
 
-		availableBlueprintsDict.Add (blueprint.buildingId, blueprintGO);
-		buildableBlueprintsDict.Add (blueprint.buildingId, blueprintGO);
-		buildingCount.Add (blueprint.buildingId, 0);
+		// Instantiate and add to list.
+		GameObject go = Instantiate(blueprintPrefab, transform.position, transform.rotation) as GameObject;
+		go.transform.parent = blueprintBucket.transform;
+
+		Blueprint newBlueprint = go.GetComponent<Blueprint> ();
+
+		availableBlueprintsDict.Add (newBlueprint.buildingId, go);
+		buildableBlueprintsDict.Add (newBlueprint.buildingId, go);
+		buildingCount.Add (newBlueprint.buildingId, 0);
 
 		updated = true;
 
 		return true; 
 	}
 
-	public bool ProvideBuildings(BuildingProvider bp) {
+	public bool ProvideBuildings(BuildingProvider bp, GameObject providee) {
 
-		foreach (GameObject building in bp.objects) {
-			ProvideBuilding (building);
+		foreach (GameObject buildingPrefab in bp.objects) {
+			ProvideBuilding (buildingPrefab, providee);
 		}
 
+		bp.ClaimProvider ();
 		return true;
 	}
 }

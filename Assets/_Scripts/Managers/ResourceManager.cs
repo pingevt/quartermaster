@@ -73,7 +73,7 @@ public class ResourceManager : MonoBehaviour {
 		resourceDict [resource_id].GetComponent<BaseResource> ().UseResources (count);
 	}
 
-	public bool ProvideResource(GameObject resourceGO) {
+	public bool ProvideResource(GameObject resourceGO, GameObject providee) {
 		BaseResource resource = resourceGO.GetComponent<BaseResource> ();
 
 		// Check if it is a blueprint.
@@ -97,12 +97,13 @@ public class ResourceManager : MonoBehaviour {
 		return true; 
 	}
 
-	public bool ProvideResources(ResourceProvider rp) {
+	public bool ProvideResources(ResourceProvider rp, GameObject providee) {
 
 		foreach (GameObject resource in rp.objects) {
-			ProvideResource (resource);
+			ProvideResource (resource, providee);
 		}
 
+		rp.ClaimProvider ();
 		return true;
 	}
 

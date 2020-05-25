@@ -62,11 +62,11 @@ public class GatherResource : BaseResource {
 
 		if ((count + actualGatherAmount) > limit) {
 
-			Debug.Log ("Reached Limit");
+//			Debug.Log ("Reached Limit");
 			count = limit;
 			collecting = false;
 		} else {
-			Debug.Log ("Still Gathering");
+//			Debug.Log ("Still Gathering");
 			count += actualGatherAmount;
 			collecting = true;
 		}

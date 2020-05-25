@@ -28,7 +28,7 @@ public class CraftingManager : MonoBehaviour {
 
 	public void checkQueue() {
 		foreach (KeyValuePair<string, GameObject> item in craftingSlotsDict) {
-			Debug.Log (item.Key);
+//			Debug.Log (item.Key);
 
 			CraftingSlot slot = item.Value.GetComponent<CraftingSlot> ();
 			checkQueue (slot);
@@ -44,8 +44,8 @@ public class CraftingManager : MonoBehaviour {
 					queue.RemoveAt (queue.IndexOf (item));
 
 					// Tell UI Manager...
-//					gameObject.SendMessage ("ChangedCrafting", slot.craftingSlotId);
-					gameObject.SendMessage ("SetUIElementActive", slot.craftingSlotId);
+					// gameObject.SendMessage ("ChangedCrafting", slot.craftingSlotUniqueId);
+					gameObject.SendMessage ("SetUIElementActive", slot.craftingSlotUniqueId);
 
 					return;
 				} else {
@@ -55,10 +55,10 @@ public class CraftingManager : MonoBehaviour {
 			}
 		}
 
-		gameObject.SendMessage("FinishedCrafting", slot.craftingSlotId);
+		gameObject.SendMessage("FinishedCrafting", slot.craftingSlotUniqueId);
 	}
 
-	public bool ProvideCraftSlot(GameObject slotGO) {
+	public bool ProvideCraftSlot(GameObject slotGO, GameObject providee) {
 		
 		CraftingSlot slot = slotGO.GetComponent<CraftingSlot> ();
 		if (slot == null) {
@@ -67,7 +67,7 @@ public class CraftingManager : MonoBehaviour {
 		}
 
 		// Check if already available.
-		if (craftingSlotsDict.ContainsKey (slot.craftingSlotId)) {
+		if (craftingSlotsDict.ContainsKey (slot.craftingSlotUniqueId)) {
 			Debug.LogWarning ("Crafting Slot already in the system");
 			return false;
 		}
@@ -76,17 +76,23 @@ public class CraftingManager : MonoBehaviour {
 		GameObject go = Instantiate(slotGO, transform.position, transform.rotation) as GameObject;
 		go.transform.parent = craftingSlotBucket.transform;
 
-	
-		craftingSlotsDict.Add (slot.craftingSlotId, go);
+		int index = craftingSlotsDict.Count;
+		string uniqueId = slot.craftingSlotId + "_" + index.ToString ();
+		go.GetComponent<CraftingSlot> ().craftingSlotUniqueId = uniqueId;
+
+		go.GetComponent<CraftingSlot> ().setSourceBuilding (providee.GetComponent<BaseBuilding> ());
+
+		craftingSlotsDict.Add (uniqueId, go);
 		return true;
 	}
 
-	public bool ProvideCraftSlots(CraftSlotProvider csp) {
+	public bool ProvideCraftSlots(CraftSlotProvider csp, GameObject providee) {
 
 		foreach (GameObject slotGO in csp.objects) {
-			ProvideCraftSlot (slotGO);
+			ProvideCraftSlot (slotGO, providee);
 		}
 
+		csp.ClaimProvider ();
 		return true;
 	}
 }

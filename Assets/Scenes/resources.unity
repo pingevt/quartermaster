@@ -375,6 +375,34 @@ Transform:
   m_Father: {fileID: 2003476558}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &508138013
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 508138014}
+  m_Layer: 0
+  m_Name: BuildingBucket
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &508138014
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 508138013}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 866049883}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &690564761
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,7 +465,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1651421058}
+  - {fileID: 508138014}
   m_Father: {fileID: 946910928}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -452,12 +482,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 748e1b50e1e864003879b8ae1835a95f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableBuildingBlueprints:
+  availableBuildingBlueprintPrefabs:
   - {fileID: 1723964652445856, guid: f9c65cfb47c18490da7a0b95310e9d64, type: 2}
-  - {fileID: 1912233844211910, guid: c72de0786236f41c39452536e76630a5, type: 2}
-  - {fileID: 1685501186161152, guid: a5bf0dc9d60144a24b8e8f891ca0157a, type: 2}
-  - {fileID: 1480774234426790, guid: c19e8f4bd6cc34148a82eb608490de92, type: 2}
   - {fileID: 1681349814514138, guid: 3b98db07dfa334a048e0f704818cd6cd, type: 2}
+  blueprintBucket: {fileID: 1651421057}
+  buildingBucket: {fileID: 508138013}
 --- !u!114 &866049885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -929,6 +958,34 @@ MonoBehaviour:
     type: 2}
   canvas: {fileID: 273172919}
   recipeSpacing: 60
+--- !u!1 &1651421057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1651421058}
+  m_Layer: 0
+  m_Name: BlueprintBucket
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1651421058
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1651421057}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 866049883}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1692419521
 GameObject:
   m_ObjectHideFlags: 0

@@ -35,7 +35,7 @@ public class RecipeManager : MonoBehaviour {
 		craftingManager.AddToQueue(recipeDict[recipeId].GetComponent<Recipe>());
 	}
 
-	public bool ProvideRecipe(GameObject rec_prefab) {
+	public bool ProvideRecipe(GameObject rec_prefab, GameObject providee) {
 		Recipe recipe = rec_prefab.GetComponent<Recipe> ();
 
 		// Check if it is a blueprint.
@@ -62,11 +62,13 @@ public class RecipeManager : MonoBehaviour {
 		return true; 
 	}
 
-	public bool ProvideRecipes(RecipeProvider recp) {
+	public bool ProvideRecipes(RecipeProvider recp, GameObject providee) {
 
 		foreach (GameObject recipe_prefab in recp.objects) {
-			ProvideRecipe (recipe_prefab);
+			ProvideRecipe (recipe_prefab, providee);
 		}
+
+		recp.ClaimProvider ();
 
 		return true;
 	}

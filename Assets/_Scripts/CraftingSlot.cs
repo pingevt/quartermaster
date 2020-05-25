@@ -15,6 +15,21 @@ public class CraftingSlot : MonoBehaviour {
 
 	public CraftingManager craftingManager;
 
+	private string _uniqueId = null;
+	public string craftingSlotUniqueId {
+		get {
+			return _uniqueId;
+		}
+		set {
+			if (_uniqueId == null) {
+				_uniqueId = value;
+				gameObject.name = value;
+			}
+		}
+	}
+
+	private BaseBuilding sourceBuilding;
+
 	void Start () {
 		craftingManager = FindObjectOfType<CraftingManager>();
 		if (!craftingManager) {
@@ -23,8 +38,13 @@ public class CraftingSlot : MonoBehaviour {
 
 	}
 
+	public void setSourceBuilding(BaseBuilding building) {
+		Debug.Log ("Setting Source Building");
+		sourceBuilding = building;
+	}
+
 	public bool CanCraft (Recipe item) {
-		Debug.Log ("Checking Can Craft: !" + busy.ToString ());
+//		Debug.Log ("Checking Can Craft: !" + busy.ToString ());
 		return !busy;
 	}
 
@@ -48,6 +68,14 @@ public class CraftingSlot : MonoBehaviour {
 	}
 
 	public void ItemFinishedCrafting() {
+//		Debug.Log ("-- ItemFinishedCrafting");
+		// Update Experience.
+//		Debug.Log(sourceBuilding);
+//		Debug.Log(currentCraftObj);
+//		Debug.Log(currentCraftObj.GetComponent<CraftItem>());
+
+		sourceBuilding.AddExperience(currentCraftObj.GetComponent<CraftItem>().experienceGranted);
+
 		currentCraftObj = null;
     	currentCraftRecipe = null;
 		busy = false;
