@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4275633643108322}
   - component: {fileID: 114059312302876174}
   - component: {fileID: 114137549021898512}
-  - component: {fileID: 114488172720451426}
   m_Layer: 0
   m_Name: Building_Tailor
   m_TagString: Untagged
@@ -66,18 +65,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897f02d4419054c749c1e24f29db080d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasBeenProvided: 0
   objects:
   - {fileID: 1267218725195322, guid: 3c870146495c44abfad0172e2663bcd3, type: 2}
---- !u!114 &114488172720451426
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1014356325402152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1dcdf59187464cad9e716d695b8b554, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objects:
-  - {fileID: 1031710637862598, guid: 708c58d33672b4b1198f036eedf2e871, type: 2}
+  buildingLevelReq:
+    level: 0
+  availBbuildingReq:
+    buildingIds: []

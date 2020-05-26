@@ -12,7 +12,7 @@ public class ProviderManager : MonoBehaviour {
 
 	public void CheckProviders(GameObject item) {
 
-		Debug.Log ("START" + item.name.ToString());
+//		Debug.Log ("START" + item.name.ToString());
 
 //		Debug.Log ("Resource Providers:");
 		ResourceProvider[] rProviders = item.GetComponents<ResourceProvider> ();
@@ -50,12 +50,12 @@ public class ProviderManager : MonoBehaviour {
 			}
 		}
 
-		Debug.Log ("Building Providers:");
+//		Debug.Log ("Building Providers:");
 		BuildingProvider[] bProviders = item.GetComponents<BuildingProvider> ();
-		Debug.Log ("Count: " + bProviders.Length.ToString());
+//		Debug.Log ("Count: " + bProviders.Length.ToString());
 		if (bProviders.Length >= 1) {
 			foreach (BuildingProvider bp in bProviders) {
-				Debug.Log ("Building Provider: " + bp.isValid ().ToString());
+//				Debug.Log ("Building Provider: " + bp.isValid ().ToString());
 				if (bp.isValid ()) {
 					buildingManager.ProvideBuildings (bp, item);
 				}
@@ -63,6 +63,6 @@ public class ProviderManager : MonoBehaviour {
 		}
 
 //		Debug.Break ();
-		Debug.Log ("END" + item.name.ToString());
+//		Debug.Log ("END" + item.name.ToString());
 	}
 }

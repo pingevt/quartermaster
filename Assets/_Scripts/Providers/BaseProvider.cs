@@ -47,18 +47,18 @@ public class BaseProvider : MonoBehaviour {
 	}
 
 	public bool isValid() {
-		Debug.Log ("-- isValid:: ");
+//		Debug.Log ("-- isValid:: ");
 
 		if (hasBeenProvided)
 			return false;
 
 		getRequirements ();
 
-		Debug.Log ("Requirements Count: " + requirements.Count.ToString());
+//		Debug.Log ("Requirements Count: " + requirements.Count.ToString());
 
 		foreach (ProviderRequirement req in requirements) {
 
-			Debug.Log (req);
+//			Debug.Log (req);
 
 			if (!req.validate(gameObject)) {
 				return false;
@@ -87,9 +87,9 @@ public class ProvReqBuildingLevel : ProviderRequirement {
 	public int level;
 
 	public override bool validate(GameObject providee) {
-		Debug.Log ("VALIDATE Requirement");
-		Debug.Log (level);
-		Debug.Log (providee.GetComponent<BaseBuilding> ());
+//		Debug.Log ("VALIDATE Requirement");
+//		Debug.Log (level);
+//		Debug.Log (providee.GetComponent<BaseBuilding> ());
 		if (providee.GetComponent<BaseBuilding>().lvl >= level) { 
 			return true;
 		}

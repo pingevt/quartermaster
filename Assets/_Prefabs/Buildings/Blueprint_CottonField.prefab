@@ -70,8 +70,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f06d1feb5eb0d406ca5d1dd99611e74b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasBeenProvided: 0
   objects:
   - {fileID: 1622272629222172, guid: 94b26fe643ec74449a5ecfab6b9136bf, type: 2}
+  buildingLevelReq:
+    level: 0
+  availBbuildingReq:
+    buildingIds: []
 --- !u!114 &114915244760706820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -83,5 +88,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa0b9f009dd94456bc514929e8473a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasBeenProvided: 0
   objects:
   - {fileID: 1431845692432472, guid: ac353f80b9cb448df89ef12b9b1df2fe, type: 2}
+  buildingLevelReq:
+    level: 0
+  availBbuildingReq:
+    buildingIds: []
